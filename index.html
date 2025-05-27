@@ -26,1195 +26,833 @@
             scroll-padding-top: 5rem;
         }
         
-        body {
-            font-family: 'Poppins', sans-serif;
-            background-color: var(--color-bg);
-            color: var(--color-dark);
-        }
-        
-        .gradient-text {
-            background: linear-gradient(to right, var(--color-primary), var(--color-secondary));
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-        }
-        
-        .gradient-bg {
-            background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
-        }
-        
-        .section-divider {
-            height: 150px;
-            overflow: hidden;
-            position: relative;
-            margin-top: -1px;
-        }
-        
-        .section-divider svg {
-            position: absolute;
-            width: 100%;
-            height: 150px;
-        }
-        
-        .skill-card {
-            background: white;
-            border-radius: 16px;
-            border: 1px solid rgba(0, 0, 0, 0.05);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
-            transition: all 0.4s ease;
-        }
-        
-        .skill-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 30px rgba(0, 0, 0, 0.1);
-        }
-        
-        .project-card {
-            transition: all 0.4s ease;
-            transform-style: preserve-3d;
-            perspective: 1000px;
-            background: white;
-            border-radius: 16px;
-            overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
-        }
-        
-        .project-card:hover {
-            transform: translateY(-10px) rotateX(5deg);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
-        }
-        
-        .project-card:hover img {
-            transform: scale(1.05);
-        }
-        
-        .project-card img {
-            transition: transform 0.5s ease;
-        }
-        
-        .tab-active {
-            position: relative;
-            color: var(--color-primary);
-            font-weight: 600;
-        }
-        
-        .tab-active::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 100%;
-            height: 3px;
-            background: linear-gradient(to right, var(--color-primary), var(--color-secondary));
-            border-radius: 3px;
-        }
-        
-        .tab-content {
-            display: none;
-        }
-        
-        .tab-content.active {
-            display: block;
-            animation: fadeIn 0.5s ease forwards;
-        }
-        
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        
-        .animate-float {
-            animation: float 3s ease-in-out infinite;
-        }
-        
-        @keyframes float {
-            0% { transform: translateY(0px); }
-            50% { transform: translateY(-15px); }
-            100% { transform: translateY(0px); }
-        }
-        
-        .animate-pulse-slow {
-            animation: pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
-        }
-        
-        @keyframes pulse {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.7; }
-        }
-        
-        .progress-bar {
-            height: 10px;
-            border-radius: 5px;
-            background: rgba(0, 0, 0, 0.05);
-            overflow: hidden;
-            position: relative;
-        }
-        
-        .progress-fill {
-            height: 100%;
-            border-radius: 5px;
-            background: linear-gradient(to right, var(--color-primary), var(--color-secondary));
-            width: 0;
-            transition: width 1.5s cubic-bezier(0.1, 0.5, 0.1, 1);
-        }
-        
-        .contact-input {
-            background: white;
-            border: 1px solid rgba(0, 0, 0, 0.1);
-            color: var(--color-dark);
-            transition: all 0.3s ease;
-        }
-        
-        .contact-input:focus {
-            border-color: var(--color-primary);
-            box-shadow: 0 0 0 2px rgba(108, 99, 255, 0.2);
-        }
-        
-        .contact-input::placeholder {
-            color: rgba(0, 0, 0, 0.3);
-        }
-        
-        .social-icon {
-            transition: all 0.3s ease;
-        }
-        
-        .social-icon:hover {
-            transform: translateY(-5px);
-        }
-        
-        .reveal {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.8s ease;
-        }
-        
-        .reveal.active {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        
-        .blob {
-            position: absolute;
-            border-radius: 50%;
-            filter: blur(60px);
-            z-index: -1;
-            animation: blob-move 15s infinite alternate;
-            opacity: 0.3;
-        }
-        
-        @keyframes blob-move {
-            0% { transform: translate(0, 0) scale(1); }
-            33% { transform: translate(50px, -50px) scale(1.1); }
-            66% { transform: translate(-20px, 20px) scale(0.9); }
-            100% { transform: translate(0, 0) scale(1); }
-        }
-        
-        .nav-link {
-            position: relative;
-            transition: all 0.3s ease;
-        }
-        
-        .nav-link::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: linear-gradient(to right, var(--color-primary), var(--color-secondary));
-            transition: width 0.3s ease;
-        }
-        
-        .nav-link:hover::after {
-            width: 100%;
-        }
-        
-        .section-bg-primary {
-            background-color: var(--color-bg);
-        }
-        
-        .section-bg-secondary {
-            background-color: #EFEAFF;
-        }
-        
-        .section-heading {
-            color: var(--color-dark);
-        }
-        
-        .project-tabs {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-            justify-content: center;
-            margin-bottom: 2rem;
-            padding: 0.5rem;
-            background-color: white;
-            border-radius: 50px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
-        }
-        
-        .project-tab-btn {
-            padding: 0.75rem 1.5rem;
-            border-radius: 50px;
-            font-weight: 500;
-            transition: all 0.3s ease;
-            cursor: pointer;
-        }
-        
-        .project-tab-btn:hover {
-            background-color: rgba(0, 0, 0, 0.05);
-        }
-        
-        .project-tab-btn.active {
-            background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
-            color: white;
-            box-shadow: 0 4px 15px rgba(108, 99, 255, 0.3);
-        }
-        
-        .category-container {
-            background-color: white;
-            border-radius: 20px;
-            padding: 30px;
-            margin-bottom: 40px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
-            border-top: 5px solid;
-        }
-        
-        .category-heading {
-            font-size: 24px;
-            font-weight: 700;
-            margin-bottom: 25px;
-            padding-bottom: 15px;
-            border-bottom: 2px solid #f0f0f0;
-            text-align: left;
-        }
-        
-        .logos-category { border-color: var(--color-primary); }
-        .social-category { border-color: var(--color-secondary); }
-        .thumbnails-category { border-color: var(--color-accent); }
-        .posters-category { border-color: var(--color-tertiary); }
-        .print-category { border-color: var(--color-quaternary); }
-    </style>
-</head>
-<body>
-    <!-- Background Blobs -->
-    <div class="blob" style="width: 300px; height: 300px; top: 20%; left: 10%; background-color: #6C63FF;"></div>
-    <div class="blob" style="width: 350px; height: 350px; top: 50%; right: 5%; background-color: #FF6584;"></div>
-    <div class="blob" style="width: 250px; height: 250px; bottom: 10%; left: 20%; background-color: #4ECDC4;"></div>
-
-    <!-- Header/Navigation -->
-    <header class="fixed w-full z-50 py-4 backdrop-blur-lg bg-white bg-opacity-80 shadow-sm">
-        <div class="container mx-auto px-4 flex justify-between items-center">
-            <a href="#" class="text-2xl font-bold">
-                <span class="gradient-text">Jane</span><span class="text-gray-800">Smith</span>
+     <!-- Hero Section -->
+<section id="home" class="min-h-screen flex items-center justify-center relative overflow-hidden pt-20">
+    <div class="hero-blob"></div>
+    <div class="container mx-auto px-4 py-20 flex flex-col items-center justify-center text-center z-10">
+        <h1 class="text-5xl md:text-7xl font-bold mb-4 fade-in">
+            <span class="gradient-text">Mannan Ansari</span>
+        </h1>
+        <h2 class="text-2xl md:text-3xl font-semibold mb-6 fade-in" style="animation-delay: 0.2s;">
+            Creative Graphic Designer
+        </h2>
+        <p class="text-lg md:text-xl text-slate-300 max-w-2xl mb-10 fade-in" style="animation-delay: 0.4s;">
+            "Transforming ideas into vibrant visual experiences that captivate and inspire"
+        </p>
+        <div class="flex flex-col md:flex-row gap-4 fade-in" style="animation-delay: 0.6s;">
+            <a href="#projects" class="px-8 py-3 rounded-full gradient-bg text-slate-900 font-semibold hover:opacity-90 transition">
+                My Work
             </a>
-            
-            <nav class="hidden md:flex space-x-8">
-                <a href="#home" class="nav-link text-gray-700 hover:text-gray-900">Home</a>
-                <a href="#about" class="nav-link text-gray-700 hover:text-gray-900">About</a>
-                <a href="#skills" class="nav-link text-gray-700 hover:text-gray-900">Skills</a>
-                <a href="#projects" class="nav-link text-gray-700 hover:text-gray-900">Projects</a>
-                <a href="#contact" class="nav-link text-gray-700 hover:text-gray-900">Contact</a>
-            </nav>
-            
-            <button class="md:hidden focus:outline-none" id="menu-toggle">
-                <svg class="w-6 h-6 text-gray-800" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
-                </svg>
-            </button>
+            <a href="#contact" class="px-8 py-3 rounded-full bg-transparent border border-white text-white font-semibold hover:bg-white/10 transition">
+                Contact Me
+            </a>
         </div>
-        
-        <!-- Mobile Menu -->
-        <div class="md:hidden hidden bg-white w-full py-4 px-4 border-t border-gray-100 shadow-lg" id="mobile-menu">
-            <div class="flex flex-col space-y-4">
-                <a href="#home" class="text-gray-700 hover:text-gray-900">Home</a>
-                <a href="#about" class="text-gray-700 hover:text-gray-900">About</a>
-                <a href="#skills" class="text-gray-700 hover:text-gray-900">Skills</a>
-                <a href="#projects" class="text-gray-700 hover:text-gray-900">Projects</a>
-                <a href="#contact" class="text-gray-700 hover:text-gray-900">Contact</a>
+        <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 scroll-down">
+            <a href="#about" class="text-white/70 hover:text-white transition">
+                <i class="fas fa-chevron-down text-2xl"></i>
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- About Section -->
+<section id="about" class="py-20 relative">
+    <div class="container mx-auto px-4">
+        <h2 class="text-4xl font-bold mb-16 text-center fade-in">
+            About <span class="gradient-text">Me</span>
+        </h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
+            <div class="fade-in">
+                <h3 class="text-2xl font-semibold mb-4">Hello, I'm Mannan Ansari</h3>
+                <p class="text-slate-300 mb-6">
+                    I'm a passionate graphic designer with a keen eye for detail and a love for creating visually stunning designs. With years of experience in the industry, I've developed a unique style that combines creativity with functionality.
+                </p>
+                <p class="text-slate-300 mb-6">
+                    My design philosophy centers around understanding the client's vision and transforming it into compelling visual narratives. I believe that great design has the power to communicate, inspire, and drive action.
+                </p>
+                <p class="text-slate-300">
+                    When I'm not designing, you can find me exploring new design trends, experimenting with different techniques, and continuously expanding my creative horizons.
+                </p>
+            </div>
+            <div class="flex justify-center fade-in">
+                <div class="relative w-80 h-80">
+                    <div class="absolute inset-0 rounded-full bg-gradient-to-r from-pink-500 via-purple-500 to-indigo-500 blur-lg opacity-30 animate-pulse"></div>
+                    <svg class="absolute inset-0" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                        <path fill="#FF6B6B" d="M40.8,-68.3C54.7,-62.5,69,-54.3,76.8,-41.6C84.6,-28.9,85.9,-11.7,83.6,4.3C81.3,20.4,75.3,35.3,65.3,46.5C55.3,57.7,41.3,65.2,26.6,70.8C11.9,76.5,-3.5,80.3,-18.4,77.7C-33.3,75.1,-47.8,66.1,-58.9,54.1C-70.1,42.1,-78,27.1,-80.2,11.1C-82.4,-4.9,-78.9,-21.9,-70.6,-35.6C-62.3,-49.3,-49.1,-59.7,-35.4,-65.5C-21.7,-71.3,-7.3,-72.5,6.4,-72.9C20.1,-73.4,26.9,-74.1,40.8,-68.3Z" transform="translate(100 100)" />
+                    </svg>
+                    <div class="absolute inset-0 flex items-center justify-center">
+                        <svg class="w-64 h-64" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="100" cy="100" r="80" fill="#0f172a" />
+                            <path fill="#f8fafc" d="M100,30 C130,30 150,50 150,80 C150,110 130,130 100,150 C70,130 50,110 50,80 C50,50 70,30 100,30 Z" />
+                            <circle cx="75" cy="80" r="10" fill="#0f172a" />
+                            <circle cx="125" cy="80" r="10" fill="#0f172a" />
+                            <path fill="#0f172a" d="M70,110 C80,120 120,120 130,110" stroke="#0f172a" stroke-width="2" />
+                        </svg>
+                    </div>
+                </div>
             </div>
         </div>
-    </header>
 
-    <!-- Hero Section -->
-    <section id="home" class="min-h-screen flex items-center justify-center relative overflow-hidden pt-20 section-bg-primary">
-        <div class="container mx-auto px-4 z-10">
-            <div class="max-w-4xl mx-auto text-center">
-                <h1 class="text-5xl md:text-7xl font-bold mb-6 animate__animated animate__fadeInUp text-gray-800">
-                    <span class="gradient-text">Jane Smith</span>
-                </h1>
-                <p class="text-xl md:text-2xl mb-8 text-gray-600 animate__animated animate__fadeInUp animate__delay-1s">Creative Graphic Designer</p>
-                <p class="text-lg md:text-xl mb-10 text-gray-500 max-w-2xl mx-auto animate__animated animate__fadeInUp animate__delay-2s">
-                    Transforming ideas into vibrant visual experiences that captivate and inspire
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-10 mt-20">
+            <!-- Education -->
+            <div class="fade-in">
+                <h3 class="text-2xl font-semibold mb-6 flex items-center">
+                    <i class="fas fa-graduation-cap mr-3 text-pink-500"></i>
+                    Education
+                </h3>
+                <div class="space-y-6">
+                    <div class="card p-6 rounded-xl">
+                        <h4 class="text-xl font-medium mb-2">Bachelor of Fine Arts in Graphic Design</h4>
+                        <p class="text-slate-400 mb-2">University of Creative Arts</p>
+                        <p class="text-slate-500">2016 - 2020</p>
+                    </div>
+                    <div class="card p-6 rounded-xl">
+                        <h4 class="text-xl font-medium mb-2">Advanced Diploma in Digital Design</h4>
+                        <p class="text-slate-400 mb-2">Design Institute</p>
+                        <p class="text-slate-500">2014 - 2016</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Experience -->
+            <div class="fade-in">
+                <h3 class="text-2xl font-semibold mb-6 flex items-center">
+                    <i class="fas fa-briefcase mr-3 text-blue-500"></i>
+                    Experience
+                </h3>
+                <div class="space-y-6">
+                    <div class="card p-6 rounded-xl">
+                        <h4 class="text-xl font-medium mb-2">Senior Graphic Designer</h4>
+                        <p class="text-slate-400 mb-2">Creative Solutions Agency</p>
+                        <p class="text-slate-500 mb-3">2020 - Present</p>
+                        <p class="text-slate-300 text-sm">Leading design projects for major clients, specializing in branding and digital media.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Skills Section -->
+<section id="skills" class="py-20 bg-slate-900/50">
+    <div class="container mx-auto px-4">
+        <h2 class="text-4xl font-bold mb-16 text-center fade-in">
+            My <span class="gradient-text">Skills</span>
+        </h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- Photoshop -->
+            <div class="skill-card p-6 rounded-xl fade-in">
+                <div class="flex items-center mb-4">
+                    <div class="w-12 h-12 rounded-full gradient-bg flex items-center justify-center mr-4">
+                        <i class="fab fa-adobe text-2xl text-slate-900"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-semibold">Adobe Photoshop</h3>
+                        <p class="text-slate-400">Expert Level</p>
+                    </div>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress gradient-bg" style="width: 95%"></div>
+                </div>
+            </div>
+
+            <!-- Illustrator -->
+            <div class="skill-card p-6 rounded-xl fade-in">
+                <div class="flex items-center mb-4">
+                    <div class="w-12 h-12 rounded-full gradient-bg flex items-center justify-center mr-4">
+                        <i class="fab fa-adobe text-2xl text-slate-900"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-semibold">Adobe Illustrator</h3>
+                        <p class="text-slate-400">Expert Level</p>
+                    </div>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress gradient-bg" style="width: 90%"></div>
+                </div>
+            </div>
+
+            <!-- Canva -->
+            <div class="skill-card p-6 rounded-xl fade-in">
+                <div class="flex items-center mb-4">
+                    <div class="w-12 h-12 rounded-full gradient-bg flex items-center justify-center mr-4">
+                        <i class="fas fa-palette text-2xl text-slate-900"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-semibold">Canva</h3>
+                        <p class="text-slate-400">Expert Level</p>
+                    </div>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress gradient-bg" style="width: 100%"></div>
+                </div>
+            </div>
+
+            <!-- Lightroom -->
+            <div class="skill-card p-6 rounded-xl fade-in">
+                <div class="flex items-center mb-4">
+                    <div class="w-12 h-12 rounded-full gradient-bg flex items-center justify-center mr-4">
+                        <i class="fab fa-adobe text-2xl text-slate-900"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-semibold">Adobe Lightroom</h3>
+                        <p class="text-slate-400">Advanced Level</p>
+                    </div>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress gradient-bg" style="width: 85%"></div>
+                </div>
+            </div>
+
+            <!-- Figma -->
+            <div class="skill-card p-6 rounded-xl fade-in">
+                <div class="flex items-center mb-4">
+                    <div class="w-12 h-12 rounded-full gradient-bg flex items-center justify-center mr-4">
+                        <i class="fab fa-figma text-2xl text-slate-900"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-semibold">Figma</h3>
+                        <p class="text-slate-400">Expert Level</p>
+                    </div>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress gradient-bg" style="width: 90%"></div>
+                </div>
+            </div>
+
+            <!-- ChatGPT -->
+            <div class="skill-card p-6 rounded-xl fade-in">
+                <div class="flex items-center mb-4">
+                    <div class="w-12 h-12 rounded-full gradient-bg flex items-center justify-center mr-4">
+                        <i class="fas fa-robot text-2xl text-slate-900"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-semibold">ChatGPT</h3>
+                        <p class="text-slate-400">Advanced Level</p>
+                    </div>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress gradient-bg" style="width: 85%"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Projects Section -->
+<section id="projects" class="py-20">
+    <div class="container mx-auto px-4">
+        <h2 class="text-4xl font-bold mb-16 text-center fade-in">
+            My <span class="gradient-text">Projects</span>
+        </h2>
+        
+        <!-- Project Categories -->
+        <div class="flex flex-wrap justify-center gap-4 mb-12 fade-in">
+            <button class="category-btn active px-6 py-2 rounded-full text-white font-medium" data-category="logos">Logos</button>
+            <button class="category-btn px-6 py-2 rounded-full text-white font-medium" data-category="social-media">Social Media</button>
+            <button class="category-btn px-6 py-2 rounded-full text-white font-medium" data-category="posters">Posters</button>
+            <button class="category-btn px-6 py-2 rounded-full text-white font-medium" data-category="thumbnails">Thumbnails</button>
+            <button class="category-btn px-6 py-2 rounded-full text-white font-medium" data-category="print">Print Material</button>
+            <button class="category-btn px-6 py-2 rounded-full text-white font-medium" data-category="mockups">Mockups</button>
+        </div>
+        
+        <!-- Logos Projects -->
+        <div class="project-section active" id="logos-section">
+            <h3 class="text-2xl font-semibold mb-8 text-center">Logo <span class="gradient-text">Designs</span></h3>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="project-card" data-modal="logo1">
+                    <svg class="w-full h-64 rounded-lg" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                        <rect width="200" height="200" fill="#1a1a2e" />
+                        <circle cx="100" cy="100" r="50" fill="#ff6b6b" />
+                        <path d="M70 70 L130 130" stroke="white" stroke-width="8" />
+                        <path d="M130 70 L70 130" stroke="white" stroke-width="8" />
+                    </svg>
+                    <div class="project-overlay rounded-lg">
+                        <h3 class="text-xl font-semibold mb-2">Modern X Logo</h3>
+                        <p class="text-slate-300 text-sm mb-4">Brand identity for tech startup</p>
+                        <button class="px-4 py-2 rounded-full gradient-bg text-slate-900 text-sm font-medium">View Full Screen</button>
+                    </div>
+                </div>
+                <div class="project-card" data-modal="logo2">
+                    <svg class="w-full h-64 rounded-lg" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                        <rect width="200" height="200" fill="#0f172a" />
+                        <circle cx="100" cy="100" r="60" fill="#feca57" />
+                        <circle cx="100" cy="100" r="40" fill="#0f172a" />
+                        <circle cx="100" cy="100" r="20" fill="#feca57" />
+                    </svg>
+                    <div class="project-overlay rounded-lg">
+                        <h3 class="text-xl font-semibold mb-2">Circular Brand</h3>
+                        <p class="text-slate-300 text-sm mb-4">Logo for photography studio</p>
+                        <button class="px-4 py-2 rounded-full gradient-bg text-slate-900 text-sm font-medium">View Full Screen</button>
+                    </div>
+                </div>
+                <div class="project-card" data-modal="logo3">
+                    <svg class="w-full h-64 rounded-lg" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                        <rect width="200" height="200" fill="#16213e" />
+                        <polygon points="100,40 140,150 60,150" fill="#48dbfb" />
+                        <polygon points="100,70 120,130 80,130" fill="#16213e" />
+                    </svg>
+                    <div class="project-overlay rounded-lg">
+                        <h3 class="text-xl font-semibold mb-2">Triangle Vision</h3>
+                        <p class="text-slate-300 text-sm mb-4">Geometric logo for design agency</p>
+                        <button class="px-4 py-2 rounded-full gradient-bg text-slate-900 text-sm font-medium">View Full Screen</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Social Media Projects -->
+        <div class="project-section" id="social-media-section">
+            <h3 class="text-2xl font-semibold mb-8 text-center">Social Media <span class="gradient-text">Designs</span></h3>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="project-card" data-modal="social1">
+                    <svg class="w-full h-64 rounded-lg" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                        <rect width="200" height="200" fill="#6c5ce7" />
+                        <rect x="20" y="60" width="160" height="80" rx="10" fill="white" />
+                        <text x="100" y="110" font-family="Arial" font-size="16" fill="#6c5ce7" text-anchor="middle">SUMMER SALE</text>
+                        <circle cx="50" cy="40" r="15" fill="#feca57" />
+                    </svg>
+                    <div class="project-overlay rounded-lg">
+                        <h3 class="text-xl font-semibold mb-2">Summer Campaign</h3>
+                        <p class="text-slate-300 text-sm mb-4">Instagram post for fashion brand</p>
+                        <button class="px-4 py-2 rounded-full gradient-bg text-slate-900 text-sm font-medium">View Full Screen</button>
+                    </div>
+                </div>
+                <div class="project-card" data-modal="social2">
+                    <svg class="w-full h-64 rounded-lg" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                        <rect width="200" height="200" fill="#ff6b6b" />
+                        <circle cx="100" cy="80" r="40" fill="white" />
+                        <rect x="40" y="130" width="120" height="30" rx="5" fill="white" />
+                        <rect x="60" y="170" width="80" height="10" rx="5" fill="white" />
+                    </svg>
+                    <div class="project-overlay rounded-lg">
+                        <h3 class="text-xl font-semibold mb-2">Product Launch</h3>
+                        <p class="text-slate-300 text-sm mb-4">Facebook post for new product</p>
+                        <button class="px-4 py-2 rounded-full gradient-bg text-slate-900 text-sm font-medium">View Full Screen</button>
+                    </div>
+                </div>
+                <div class="project-card" data-modal="social3">
+                    <svg class="w-full h-64 rounded-lg" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                        <rect width="200" height="200" fill="#1dd1a1" />
+                        <path d="M50,100 Q100,50 150,100 T250,100" stroke="white" stroke-width="5" fill="none" />
+                        <circle cx="50" cy="100" r="10" fill="white" />
+                        <circle cx="150" cy="100" r="10" fill="white" />
+                    </svg>
+                    <div class="project-overlay rounded-lg">
+                        <h3 class="text-xl font-semibold mb-2">Fitness Journey</h3>
+                        <p class="text-slate-300 text-sm mb-4">Twitter post for health brand</p>
+                        <button class="px-4 py-2 rounded-full gradient-bg text-slate-900 text-sm font-medium">View Full Screen</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Posters Projects -->
+        <div class="project-section" id="posters-section">
+            <h3 class="text-2xl font-semibold mb-8 text-center">Poster <span class="gradient-text">Designs</span></h3>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="project-card" data-modal="poster1">
+                    <svg class="w-full h-64 rounded-lg" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                        <rect width="200" height="200" fill="#2c3e50" />
+                        <text x="100" y="80" font-family="Arial" font-size="24" fill="white" text-anchor="middle">MUSIC</text>
+                        <text x="100" y="110" font-family="Arial" font-size="24" fill="white" text-anchor="middle">FESTIVAL</text>
+                        <text x="100" y="140" font-family="Arial" font-size="12" fill="#ff6b6b" text-anchor="middle">SUMMER 2023</text>
+                        <circle cx="160" cy="40" r="20" fill="#ff6b6b" />
+                    </svg>
+                    <div class="project-overlay rounded-lg">
+                        <h3 class="text-xl font-semibold mb-2">Music Festival</h3>
+                        <p class="text-slate-300 text-sm mb-4">Event poster design</p>
+                        <button class="px-4 py-2 rounded-full gradient-bg text-slate-900 text-sm font-medium">View Full Screen</button>
+                    </div>
+                </div>
+                <div class="project-card" data-modal="poster2">
+                    <svg class="w-full h-64 rounded-lg" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                        <rect width="200" height="200" fill="#6c5ce7" />
+                        <polygon points="100,30 120,80 180,80 130,110 150,170 100,140 50,170 70,110 20,80 80,80" fill="#feca57" />
+                        <text x="100" y="180" font-family="Arial" font-size="14" fill="white" text-anchor="middle">NIGHT STARS</text>
+                    </svg>
+                    <div class="project-overlay rounded-lg">
+                        <h3 class="text-xl font-semibold mb-2">Night Stars</h3>
+                        <p class="text-slate-300 text-sm mb-4">Movie premiere poster</p>
+                        <button class="px-4 py-2 rounded-full gradient-bg text-slate-900 text-sm font-medium">View Full Screen</button>
+                    </div>
+                </div>
+                <div class="project-card" data-modal="poster3">
+                    <svg class="w-full h-64 rounded-lg" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                        <rect width="200" height="200" fill="#1dd1a1" />
+                        <circle cx="100" cy="80" r="50" fill="white" opacity="0.8" />
+                        <text x="100" y="85" font-family="Arial" font-size="16" fill="#1dd1a1" text-anchor="middle">ECO</text>
+                        <text x="100" y="150" font-family="Arial" font-size="20" fill="white" text-anchor="middle">SAVE EARTH</text>
+                    </svg>
+                    <div class="project-overlay rounded-lg">
+                        <h3 class="text-xl font-semibold mb-2">Eco Campaign</h3>
+                        <p class="text-slate-300 text-sm mb-4">Environmental awareness poster</p>
+                        <button class="px-4 py-2 rounded-full gradient-bg text-slate-900 text-sm font-medium">View Full Screen</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Thumbnails Projects -->
+        <div class="project-section" id="thumbnails-section">
+            <h3 class="text-2xl font-semibold mb-8 text-center">Thumbnail <span class="gradient-text">Designs</span></h3>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="project-card" data-modal="thumb1">
+                    <svg class="w-full h-64 rounded-lg" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                        <rect width="200" height="200" fill="#ff6b6b" />
+                        <circle cx="50" cy="50" r="30" fill="white" />
+                        <polygon points="40,40 40,60 65,50" fill="#ff6b6b" />
+                        <text x="120" y="100" font-family="Arial" font-size="16" fill="white" text-anchor="middle">DESIGN</text>
+                        <text x="120" y="120" font-family="Arial" font-size="16" fill="white" text-anchor="middle">TUTORIAL</text>
+                    </svg>
+                    <div class="project-overlay rounded-lg">
+                        <h3 class="text-xl font-semibold mb-2">Design Tutorial</h3>
+                        <p class="text-slate-300 text-sm mb-4">YouTube thumbnail</p>
+                        <button class="px-4 py-2 rounded-full gradient-bg text-slate-900 text-sm font-medium">View Full Screen</button>
+                    </div>
+                </div>
+                <div class="project-card" data-modal="thumb2">
+                    <svg class="w-full h-64 rounded-lg" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                        <rect width="200" height="200" fill="#48dbfb" />
+                        <text x="100" y="90" font-family="Arial" font-size="24" font-weight="bold" fill="white" text-anchor="middle">TOP 10</text>
+                        <text x="100" y="120" font-family="Arial" font-size="16" fill="white" text-anchor="middle">DESIGN TRENDS</text>
+                        <polygon points="160,40 180,60 160,80" fill="white" />
+                    </svg>
+                    <div class="project-overlay rounded-lg">
+                        <h3 class="text-xl font-semibold mb-2">Top 10 Trends</h3>
+                        <p class="text-slate-300 text-sm mb-4">Blog post thumbnail</p>
+                        <button class="px-4 py-2 rounded-full gradient-bg text-slate-900 text-sm font-medium">View Full Screen</button>
+                    </div>
+                </div>
+                <div class="project-card" data-modal="thumb3">
+                    <svg class="w-full h-64 rounded-lg" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                        <rect width="200" height="200" fill="#6c5ce7" />
+                        <circle cx="100" cy="100" r="60" fill="white" opacity="0.2" />
+                        <text x="100" y="90" font-family="Arial" font-size="20" fill="white" text-anchor="middle">PODCAST</text>
+                        <text x="100" y="115" font-family="Arial" font-size="14" fill="white" text-anchor="middle">EPISODE 42</text>
+                    </svg>
+                    <div class="project-overlay rounded-lg">
+                        <h3 class="text-xl font-semibold mb-2">Podcast Episode</h3>
+                        <p class="text-slate-300 text-sm mb-4">Audio content thumbnail</p>
+                        <button class="px-4 py-2 rounded-full gradient-bg text-slate-900 text-sm font-medium">View Full Screen</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Print Material Projects -->
+        <div class="project-section" id="print-section">
+            <h3 class="text-2xl font-semibold mb-8 text-center">Print <span class="gradient-text">Materials</span></h3>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="project-card" data-modal="print1">
+                    <svg class="w-full h-64 rounded-lg" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                        <rect width="200" height="200" fill="#2c3e50" />
+                        <rect x="30" y="30" width="140" height="90" fill="white" />
+                        <text x="100" y="70" font-family="Arial" font-size="14" fill="#2c3e50" text-anchor="middle">JOHN DOE</text>
+                        <text x="100" y="90" font-family="Arial" font-size="10" fill="#2c3e50" text-anchor="middle">GRAPHIC DESIGNER</text>
+                        <rect x="30" y="130" width="140" height="40" fill="#ff6b6b" />
+                        <text x="100" y="155" font-family="Arial" font-size="10" fill="white" text-anchor="middle">contact@johndoe.com</text>
+                    </svg>
+                    <div class="project-overlay rounded-lg">
+                        <h3 class="text-xl font-semibold mb-2">Business Card</h3>
+                        <p class="text-slate-300 text-sm mb-4">Corporate identity design</p>
+                        <button class="px-4 py-2 rounded-full gradient-bg text-slate-900 text-sm font-medium">View Full Screen</button>
+                    </div>
+                </div>
+                <div class="project-card" data-modal="print2">
+                    <svg class="w-full h-64 rounded-lg" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                        <rect width="200" height="200" fill="#feca57" />
+                        <rect x="20" y="20" width="160" height="160" fill="white" opacity="0.9" />
+                        <text x="100" y="60" font-family="Arial" font-size="16" fill="#feca57" text-anchor="middle">COMPANY</text>
+                        <text x="100" y="80" font-family="Arial" font-size="16" fill="#feca57" text-anchor="middle">BROCHURE</text>
+                        <line x1="50" y1="100" x2="150" y2="100" stroke="#feca57" stroke-width="2" />
+                        <rect x="40" y="120" width="120" height="40" fill="#feca57" opacity="0.3" />
+                    </svg>
+                    <div class="project-overlay rounded-lg">
+                        <h3 class="text-xl font-semibold mb-2">Company Brochure</h3>
+                        <p class="text-slate-300 text-sm mb-4">Marketing material design</p>
+                        <button class="px-4 py-2 rounded-full gradient-bg text-slate-900 text-sm font-medium">View Full Screen</button>
+                    </div>
+                </div>
+                <div class="project-card" data-modal="print3">
+                    <svg class="w-full h-64 rounded-lg" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                        <rect width="200" height="200" fill="#48dbfb" />
+                        <rect x="40" y="40" width="120" height="120" fill="white" />
+                        <circle cx="100" cy="80" r="30" fill="#48dbfb" />
+                        <text x="100" y="140" font-family="Arial" font-size="14" fill="#48dbfb" text-anchor="middle">PRODUCT CATALOG</text>
+                    </svg>
+                    <div class="project-overlay rounded-lg">
+                        <h3 class="text-xl font-semibold mb-2">Product Catalog</h3>
+                        <p class="text-slate-300 text-sm mb-4">Retail print design</p>
+                        <button class="px-4 py-2 rounded-full gradient-bg text-slate-900 text-sm font-medium">View Full Screen</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Mockups Projects -->
+        <div class="project-section" id="mockups-section">
+            <h3 class="text-2xl font-semibold mb-8 text-center">Product <span class="gradient-text">Mockups</span></h3>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="project-card" data-modal="mockup1">
+                    <svg class="w-full h-64 rounded-lg" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                        <rect width="200" height="200" fill="#1e272e" />
+                        <rect x="40" y="30" width="120" height="80" rx="5" fill="#f5f6fa" />
+                        <rect x="50" y="40" width="100" height="60" fill="#0f172a" />
+                        <rect x="70" y="120" width="60" height="10" rx="5" fill="#f5f6fa" />
+                        <rect x="60" y="140" width="80" height="30" rx="15" fill="#ff6b6b" />
+                        <text x="100" y="160" font-family="Arial" font-size="12" fill="white" text-anchor="middle">DOWNLOAD</text>
+                    </svg>
+                    <div class="project-overlay rounded-lg">
+                        <h3 class="text-xl font-semibold mb-2">Website Mockup</h3>
+                        <p class="text-slate-300 text-sm mb-4">UI/UX design presentation</p>
+                        <button class="px-4 py-2 rounded-full gradient-bg text-slate-900 text-sm font-medium">View Full Screen</button>
+                    </div>
+                </div>
+                <div class="project-card" data-modal="mockup2">
+                    <svg class="w-full h-64 rounded-lg" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                        <rect width="200" height="200" fill="#f5f6fa" />
+                        <rect x="50" y="30" width="100" height="140" rx="10" fill="#2c3e50" />
+                        <rect x="60" y="40" width="80" height="100" fill="#f5f6fa" />
+                        <circle cx="100" cy="155" r="10" fill="#f5f6fa" />
+                    </svg>
+                    <div class="project-overlay rounded-lg">
+                        <h3 class="text-xl font-semibold mb-2">Mobile App Mockup</h3>
+                        <p class="text-slate-300 text-sm mb-4">App interface presentation</p>
+                        <button class="px-4 py-2 rounded-full gradient-bg text-slate-900 text-sm font-medium">View Full Screen</button>
+                    </div>
+                </div>
+                <div class="project-card" data-modal="mockup3">
+                    <svg class="w-full h-64 rounded-lg" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                        <rect width="200" height="200" fill="#1dd1a1" />
+                        <rect x="30" y="40" width="140" height="120" fill="white" />
+                        <rect x="40" y="50" width="120" height="80" fill="#1dd1a1" opacity="0.3" />
+                        <rect x="40" y="140" width="30" height="10" fill="#1dd1a1" opacity="0.6" />
+                        <rect x="80" y="140" width="30" height="10" fill="#1dd1a1" opacity="0.6" />
+                        <rect x="120" y="140" width="30" height="10" fill="#1dd1a1" opacity="0.6" />
+                    </svg>
+                    <div class="project-overlay rounded-lg">
+                        <h3 class="text-xl font-semibold mb-2">T-shirt Mockup</h3>
+                        <p class="text-slate-300 text-sm mb-4">Apparel design presentation</p>
+                        <button class="px-4 py-2 rounded-full gradient-bg text-slate-900 text-sm font-medium">View Full Screen</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Testimonials Section -->
+<section id="testimonials" class="py-20 bg-slate-900/50">
+    <div class="container mx-auto px-4">
+        <h2 class="text-4xl font-bold mb-16 text-center fade-in">
+            Client <span class="gradient-text">Testimonials</span>
+        </h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+            <div class="testimonial-card p-8 rounded-xl fade-in">
+                <div class="flex items-center mb-6">
+                    <div class="w-16 h-16 rounded-full gradient-bg flex items-center justify-center mr-4">
+                        <svg viewBox="0 0 24 24" class="w-8 h-8 text-slate-900">
+                            <path fill="currentColor" d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+                        </svg>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-semibold">Sarah Johnson</h3>
+                        <p class="text-slate-400">Marketing Director, TechCorp</p>
+                    </div>
+                </div>
+                <p class="text-slate-300">
+                    "Working with Mannan was an absolute pleasure. His creativity and attention to detail transformed our brand identity. The designs he created perfectly captured our vision and helped us stand out in a competitive market. I highly recommend his services to anyone looking for top-notch graphic design work."
                 </p>
-                <div class="flex flex-wrap justify-center gap-4 animate__animated animate__fadeInUp animate__delay-3s">
-                    <a href="#projects" class="gradient-bg text-white font-medium py-3 px-8 rounded-full transition duration-300 hover:opacity-90 transform hover:scale-105 shadow-lg">
-                        View My Work
+                <div class="mt-4 flex">
+                    <i class="fas fa-star text-yellow-400"></i>
+                    <i class="fas fa-star text-yellow-400"></i>
+                    <i class="fas fa-star text-yellow-400"></i>
+                    <i class="fas fa-star text-yellow-400"></i>
+                    <i class="fas fa-star text-yellow-400"></i>
+                </div>
+            </div>
+            
+            <div class="testimonial-card p-8 rounded-xl fade-in">
+                <div class="flex items-center mb-6">
+                    <div class="w-16 h-16 rounded-full gradient-bg flex items-center justify-center mr-4">
+                        <svg viewBox="0 0 24 24" class="w-8 h-8 text-slate-900">
+                            <path fill="currentColor" d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+                        </svg>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-semibold">Michael Chen</h3>
+                        <p class="text-slate-400">Founder, Startup Innovations</p>
+                    </div>
+                </div>
+                <p class="text-slate-300">
+                    "Mannan exceeded all our expectations. As a startup, we needed a strong visual identity that would help us make an impact from day one. The logo, website, and marketing materials he designed were not only beautiful but also perfectly aligned with our brand values. His ability to translate concepts into stunning visuals is truly remarkable."
+                </p>
+                <div class="mt-4 flex">
+                    <i class="fas fa-star text-yellow-400"></i>
+                    <i class="fas fa-star text-yellow-400"></i>
+                    <i class="fas fa-star text-yellow-400"></i>
+                    <i class="fas fa-star text-yellow-400"></i>
+                    <i class="fas fa-star text-yellow-400"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Contact Section -->
+<section id="contact" class="py-20">
+    <div class="container mx-auto px-4">
+        <h2 class="text-4xl font-bold mb-16 text-center fade-in">
+            Get in <span class="gradient-text">Touch</span>
+        </h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+            <div class="fade-in">
+                <h3 class="text-2xl font-semibold mb-6">Contact Information</h3>
+                <div class="space-y-6">
+                    <div class="flex items-center">
+                        <div class="w-12 h-12 rounded-full gradient-bg flex items-center justify-center mr-4">
+                            <i class="fas fa-envelope text-slate-900"></i>
+                        </div>
+                        <div>
+                            <p class="text-slate-400 text-sm">Email</p>
+                            <p class="text-white">mannan.ansari@example.com</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center">
+                        <div class="w-12 h-12 rounded-full gradient-bg flex items-center justify-center mr-4">
+                            <i class="fas fa-phone text-slate-900"></i>
+                        </div>
+                        <div>
+                            <p class="text-slate-400 text-sm">Phone</p>
+                            <p class="text-white">+1 (555) 123-4567</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center">
+                        <div class="w-12 h-12 rounded-full gradient-bg flex items-center justify-center mr-4">
+                            <i class="fas fa-map-marker-alt text-slate-900"></i>
+                        </div>
+                        <div>
+                            <p class="text-slate-400 text-sm">Location</p>
+                            <p class="text-white">New York, NY, United States</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <h3 class="text-2xl font-semibold mt-10 mb-6">Follow Me</h3>
+                <div class="flex space-x-4">
+                    <a href="#" class="social-icon w-12 h-12 rounded-full gradient-bg flex items-center justify-center">
+                        <i class="fab fa-instagram text-slate-900 text-xl"></i>
                     </a>
-                    <a href="#contact" class="bg-white hover:bg-gray-50 text-gray-800 font-medium py-3 px-8 border border-gray-200 rounded-full transition duration-300 shadow-lg">
-                        Contact Me
+                    <a href="#" class="social-icon w-12 h-12 rounded-full gradient-bg flex items-center justify-center">
+                        <i class="fab fa-linkedin-in text-slate-900 text-xl"></i>
+                    </a>
+                    <a href="#" class="social-icon w-12 h-12 rounded-full gradient-bg flex items-center justify-center">
+                        <i class="fab fa-behance text-slate-900 text-xl"></i>
+                    </a>
+                    <a href="#" class="social-icon w-12 h-12 rounded-full gradient-bg flex items-center justify-center">
+                        <i class="fab fa-dribbble text-slate-900 text-xl"></i>
                     </a>
                 </div>
             </div>
+            
+            <div class="fade-in">
+                <form class="space-y-6">
+                    <div>
+                        <label for="name" class="block text-slate-300 mb-2">Name</label>
+                        <input type="text" id="name" class="w-full px-4 py-3 bg-slate-800 border border-slate-700 rounded-lg focus:outline-none focus:border-pink-500 transition">
+                    </div>
+                    <div>
+                        <label for="email" class="block text-slate-300 mb-2">Email</label>
+                        <input type="email" id="email" class="w-full px-4 py-3 bg-slate-800 border border-slate-700 rounded-lg focus:outline-none focus:border-pink-500 transition">
+                    </div>
+                    <div>
+                        <label for="message" class="block text-slate-300 mb-2">Message</label>
+                        <textarea id="message" rows="5" class="w-full px-4 py-3 bg-slate-800 border border-slate-700 rounded-lg focus:outline-none focus:border-pink-500 transition"></textarea>
+                    </div>
+                    <button type="button" class="px-8 py-3 rounded-full gradient-bg text-slate-900 font-semibold hover:opacity-90 transition w-full">
+                        Send Message
+                    </button>
+                </form>
+            </div>
         </div>
-        
-        <!-- Animated Shapes -->
-        <div class="absolute inset-0 z-0 overflow-hidden">
-            <div class="absolute top-1/4 left-1/4 w-64 h-64 bg-purple-400 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-float"></div>
-            <div class="absolute top-1/3 right-1/4 w-80 h-80 bg-pink-400 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-float" style="animation-delay: 1s;"></div>
-            <div class="absolute bottom-1/4 right-1/3 w-72 h-72 bg-teal-400 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-float" style="animation-delay: 2s;"></div>
-        </div>
-        
-        <!-- Scroll Down Indicator -->
-        <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce">
-            <a href="#about" class="text-gray-400 hover:text-gray-600">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
-                </svg>
-            </a>
-        </div>
-    </section>
-    
-    <!-- Section Divider -->
-    <div class="section-divider">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320" preserveAspectRatio="none">
-            <path fill="#EFEAFF" fill-opacity="1" d="M0,96L48,112C96,128,192,160,288,160C384,160,480,128,576,133.3C672,139,768,181,864,181.3C960,181,1056,139,1152,122.7C1248,107,1344,117,1392,122.7L1440,128L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path>
-        </svg>
     </div>
+</section>
 
-    <!-- About Section -->
-    <section id="about" class="py-20 section-bg-secondary relative">
-        <div class="container mx-auto px-4">
-            <div class="text-center mb-16 reveal">
-                <h2 class="text-3xl md:text-5xl font-bold mb-4 section-heading">About <span class="gradient-text">Me</span></h2>
-                <div class="w-24 h-1 gradient-bg mx-auto rounded-full"></div>
-            </div>
-            
-            <div class="flex flex-col md:flex-row items-center max-w-6xl mx-auto">
-                <div class="md:w-2/5 mb-10 md:mb-0 reveal">
-                    <div class="relative w-64 h-64 mx-auto rounded-full overflow-hidden border-4 gradient-bg p-1">
-                        <div class="w-full h-full rounded-full overflow-hidden bg-gray-300 flex items-center justify-center">
-                            <svg class="w-full h-full text-gray-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                                <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd"></path>
-                            </svg>
-                        </div>
-                        
-                        <!-- Decorative Elements -->
-                        <div class="absolute -top-4 -right-4 w-8 h-8 rounded-full gradient-bg animate-pulse-slow"></div>
-                        <div class="absolute -bottom-4 -left-4 w-6 h-6 rounded-full bg-yellow-400 animate-pulse-slow" style="animation-delay: 1s;"></div>
-                    </div>
-                </div>
-                
-                <div class="md:w-3/5 md:pl-12 reveal" style="transition-delay: 0.2s;">
-                    <h3 class="text-2xl font-bold mb-4 gradient-text">Hello, I'm Jane Smith</h3>
-                    <p class="text-gray-600 mb-6 leading-relaxed">
-                        I'm a passionate graphic designer with over 5 years of experience creating compelling visual solutions for brands and businesses. My design philosophy centers around vibrant aesthetics, purposeful creativity, and effective communication.
-                    </p>
-                    <p class="text-gray-600 mb-6 leading-relaxed">
-                        Based in New York City, I specialize in brand identity, print design, and digital media. I believe that great design should not only look beautiful but also solve problems and connect with audiences on a deeper level.
-                    </p>
-                    <div class="flex flex-wrap gap-6">
-                        <div class="flex items-center">
-                            <div class="w-12 h-12 rounded-full gradient-bg flex items-center justify-center mr-4 text-white">
-                                <i class="fas fa-graduation-cap text-xl"></i>
-                            </div>
-                            <div>
-                                <h4 class="font-semibold text-gray-800">Education</h4>
-                                <p class="text-gray-600">BFA in Graphic Design</p>
-                            </div>
-                        </div>
-                        <div class="flex items-center">
-                            <div class="w-12 h-12 rounded-full gradient-bg flex items-center justify-center mr-4 text-white">
-                                <i class="fas fa-briefcase text-xl"></i>
-                            </div>
-                            <div>
-                                <h4 class="font-semibold text-gray-800">Experience</h4>
-                                <p class="text-gray-600">5+ Years</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    
-    <!-- Section Divider -->
-    <div class="section-divider">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320" preserveAspectRatio="none">
-            <path fill="#F9F7FF" fill-opacity="1" d="M0,160L48,170.7C96,181,192,203,288,202.7C384,203,480,181,576,154.7C672,128,768,96,864,96C960,96,1056,128,1152,138.7C1248,149,1344,139,1392,133.3L1440,128L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path>
-        </svg>
+<!-- Footer -->
+<footer class="py-8 bg-slate-900 border-t border-slate-800">
+    <div class="container mx-auto px-4 text-center">
+        <p class="text-slate-400">
+            © 2023 Mannan Ansari. All Rights Reserved.
+        </p>
     </div>
+</footer>
 
-    <!-- Skills Section -->
-    <section id="skills" class="py-20 section-bg-primary relative">
-        <div class="container mx-auto px-4">
-            <div class="text-center mb-16 reveal">
-                <h2 class="text-3xl md:text-5xl font-bold mb-4 section-heading">My <span class="gradient-text">Skills</span></h2>
-                <div class="w-24 h-1 gradient-bg mx-auto rounded-full"></div>
-                <p class="text-gray-600 mt-6 max-w-2xl mx-auto">
-                    I've mastered these industry-standard tools to bring creative visions to life
-                </p>
-            </div>
-            
-            <div class="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Photoshop -->
-                <div class="skill-card p-6 reveal" style="transition-delay: 0.1s;">
-                    <div class="flex items-center mb-4">
-                        <div class="w-12 h-12 rounded-lg bg-blue-100 flex items-center justify-center mr-4">
-                            <i class="fab fa-adobe text-blue-600 text-2xl"></i>
-                        </div>
-                        <h3 class="text-xl font-semibold text-gray-800">Adobe Photoshop</h3>
-                    </div>
-                    <div class="progress-bar mb-2">
-                        <div class="progress-fill" data-width="95%"></div>
-                    </div>
-                    <div class="flex justify-between text-sm">
-                        <span class="text-gray-500">Expert</span>
-                        <span class="text-gray-700">95%</span>
-                    </div>
-                </div>
-                
-                <!-- Illustrator -->
-                <div class="skill-card p-6 reveal" style="transition-delay: 0.2s;">
-                    <div class="flex items-center mb-4">
-                        <div class="w-12 h-12 rounded-lg bg-orange-100 flex items-center justify-center mr-4">
-                            <i class="fab fa-adobe text-orange-600 text-2xl"></i>
-                        </div>
-                        <h3 class="text-xl font-semibold text-gray-800">Adobe Illustrator</h3>
-                    </div>
-                    <div class="progress-bar mb-2">
-                        <div class="progress-fill" data-width="90%"></div>
-                    </div>
-                    <div class="flex justify-between text-sm">
-                        <span class="text-gray-500">Expert</span>
-                        <span class="text-gray-700">90%</span>
-                    </div>
-                </div>
-                
-                <!-- Canva -->
-                <div class="skill-card p-6 reveal" style="transition-delay: 0.3s;">
-                    <div class="flex items-center mb-4">
-                        <div class="w-12 h-12 rounded-lg bg-cyan-100 flex items-center justify-center mr-4">
-                            <i class="fas fa-palette text-cyan-600 text-2xl"></i>
-                        </div>
-                        <h3 class="text-xl font-semibold text-gray-800">Canva</h3>
-                    </div>
-                    <div class="progress-bar mb-2">
-                        <div class="progress-fill" data-width="95%"></div>
-                    </div>
-                    <div class="flex justify-between text-sm">
-                        <span class="text-gray-500">Expert</span>
-                        <span class="text-gray-700">95%</span>
-                    </div>
-                </div>
-                
-                <!-- ChatGPT -->
-                <div class="skill-card p-6 reveal" style="transition-delay: 0.4s;">
-                    <div class="flex items-center mb-4">
-                        <div class="w-12 h-12 rounded-lg bg-green-100 flex items-center justify-center mr-4">
-                            <i class="fas fa-robot text-green-600 text-2xl"></i>
-                        </div>
-                        <h3 class="text-xl font-semibold text-gray-800">ChatGPT</h3>
-                    </div>
-                    <div class="progress-bar mb-2">
-                        <div class="progress-fill" data-width="85%"></div>
-                    </div>
-                    <div class="flex justify-between text-sm">
-                        <span class="text-gray-500">Advanced</span>
-                        <span class="text-gray-700">85%</span>
-                    </div>
-                </div>
-                
-                <!-- Lightroom -->
-                <div class="skill-card p-6 reveal" style="transition-delay: 0.5s;">
-                    <div class="flex items-center mb-4">
-                        <div class="w-12 h-12 rounded-lg bg-blue-100 flex items-center justify-center mr-4">
-                            <i class="fab fa-adobe text-blue-600 text-2xl"></i>
-                        </div>
-                        <h3 class="text-xl font-semibold text-gray-800">Adobe Lightroom</h3>
-                    </div>
-                    <div class="progress-bar mb-2">
-                        <div class="progress-fill" data-width="80%"></div>
-                    </div>
-                    <div class="flex justify-between text-sm">
-                        <span class="text-gray-500">Advanced</span>
-                        <span class="text-gray-700">80%</span>
-                    </div>
-                </div>
-                
-                <!-- Figma -->
-                <div class="skill-card p-6 reveal" style="transition-delay: 0.6s;">
-                    <div class="flex items-center mb-4">
-                        <div class="w-12 h-12 rounded-lg bg-purple-100 flex items-center justify-center mr-4">
-                            <i class="fab fa-figma text-purple-600 text-2xl"></i>
-                        </div>
-                        <h3 class="text-xl font-semibold text-gray-800">Figma</h3>
-                    </div>
-                    <div class="progress-bar mb-2">
-                        <div class="progress-fill" data-width="85%"></div>
-                    </div>
-                    <div class="flex justify-between text-sm">
-                        <span class="text-gray-500">Advanced</span>
-                        <span class="text-gray-700">85%</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    
-    <!-- Section Divider -->
-    <div class="section-divider">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320" preserveAspectRatio="none">
-            <path fill="#EFEAFF" fill-opacity="1" d="M0,32L48,58.7C96,85,192,139,288,144C384,149,480,107,576,112C672,117,768,171,864,176C960,181,1056,139,1152,122.7C1248,107,1344,117,1392,122.7L1440,128L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path>
+<!-- Project Modals -->
+<div id="logo1-modal" class="modal">
+    <span class="modal-close">&times;</span>
+    <div class="modal-content">
+        <svg class="w-full" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+            <rect width="200" height="200" fill="#1a1a2e" />
+            <circle cx="100" cy="100" r="50" fill="#ff6b6b" />
+            <path d="M70 70 L130 130" stroke="white" stroke-width="8" />
+            <path d="M130 70 L70 130" stroke="white" stroke-width="8" />
         </svg>
-    </div>
-
-    <!-- Projects Section -->
-    <section id="projects" class="py-20 section-bg-secondary relative">
-        <div class="container mx-auto px-4">
-            <div class="text-center mb-16 reveal">
-                <h2 class="text-3xl md:text-5xl font-bold mb-4 section-heading">My <span class="gradient-text">Projects</span></h2>
-                <div class="w-24 h-1 gradient-bg mx-auto rounded-full"></div>
-                <p class="text-gray-600 mt-6 max-w-2xl mx-auto">
-                    Browse through my recent design work across various categories
-                </p>
-            </div>
-            
-            <!-- Project Categories Tabs -->
-            <div class="project-tabs reveal mb-10">
-                <button class="project-tab-btn active" data-tab="logos">Logos</button>
-                <button class="project-tab-btn" data-tab="social-media">Social Media</button>
-                <button class="project-tab-btn" data-tab="thumbnails">Thumbnails</button>
-                <button class="project-tab-btn" data-tab="posters">Posters</button>
-                <button class="project-tab-btn" data-tab="print">Print Design</button>
-            </div>
-            
-            <!-- Logos Tab Content -->
-            <div id="logos" class="tab-content active">
-                <div class="category-container logos-category reveal">
-                    <h3 class="category-heading" style="color: var(--color-primary);">
-                        <i class="fas fa-vector-square mr-2"></i> Logo Designs
-                    </h3>
-                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                        <!-- Logo 1 -->
-                        <div class="project-card">
-                            <div class="h-64 bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center p-8">
-                                <svg class="w-full h-full text-white" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-                                    <circle cx="100" cy="100" r="80" fill="currentColor" fill-opacity="0.2"/>
-                                    <path d="M100 50 L150 150 L50 150 Z" fill="currentColor"/>
-                                </svg>
-                            </div>
-                            <div class="p-6">
-                                <h3 class="font-bold text-lg mb-2 text-gray-800">Mountain Peak Logo</h3>
-                                <p class="text-gray-600 text-sm">Brand identity for an outdoor adventure company</p>
-                            </div>
-                        </div>
-                        
-                        <!-- Logo 2 -->
-                        <div class="project-card">
-                            <div class="h-64 bg-gradient-to-br from-pink-500 to-red-600 flex items-center justify-center p-8">
-                                <svg class="w-full h-full text-white" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-                                    <circle cx="100" cy="100" r="50" fill="currentColor" fill-opacity="0.2"/>
-                                    <circle cx="100" cy="100" r="30" fill="currentColor"/>
-                                </svg>
-                            </div>
-                            <div class="p-6">
-                                <h3 class="font-bold text-lg mb-2 text-gray-800">Circle Fusion Logo</h3>
-                                <p class="text-gray-600 text-sm">Minimalist logo for a tech startup</p>
-                            </div>
-                        </div>
-                        
-                        <!-- Logo 3 -->
-                        <div class="project-card">
-                            <div class="h-64 bg-gradient-to-br from-green-500 to-teal-600 flex items-center justify-center p-8">
-                                <svg class="w-full h-full text-white" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-                                    <rect x="50" y="50" width="100" height="100" fill="currentColor" fill-opacity="0.2"/>
-                                    <rect x="70" y="70" width="60" height="60" fill="currentColor"/>
-                                </svg>
-                            </div>
-                            <div class="p-6">
-                                <h3 class="font-bold text-lg mb-2 text-gray-800">Square Space Logo</h3>
-                                <p class="text-gray-600 text-sm">Geometric logo for an architecture firm</p>
-                            </div>
-                        </div>
-                        
-                        <!-- Logo 4 -->
-                        <div class="project-card">
-                            <div class="h-64 bg-gradient-to-br from-yellow-400 to-orange-500 flex items-center justify-center p-8">
-                                <svg class="w-full h-full text-white" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M100,30 L130,70 L170,80 L140,120 L150,160 L100,140 L50,160 L60,120 L30,80 L70,70 Z" fill="currentColor" fill-opacity="0.2"/>
-                                    <path d="M100,50 L120,80 L150,85 L125,115 L130,145 L100,130 L70,145 L75,115 L50,85 L80,80 Z" fill="currentColor"/>
-                                </svg>
-                            </div>
-                            <div class="p-6">
-                                <h3 class="font-bold text-lg mb-2 text-gray-800">Star Burst Logo</h3>
-                                <p class="text-gray-600 text-sm">Dynamic logo for an entertainment company</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Social Media Tab Content -->
-            <div id="social-media" class="tab-content">
-                <div class="category-container social-category reveal">
-                    <h3 class="category-heading" style="color: var(--color-secondary);">
-                        <i class="fas fa-hashtag mr-2"></i> Social Media Designs
-                    </h3>
-                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                        <!-- Social Media 1 -->
-                        <div class="project-card">
-                            <div class="h-64 bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center p-4">
-                                <div class="text-center text-white">
-                                    <h3 class="font-bold text-2xl">SUMMER SALE</h3>
-                                    <p class="text-lg mt-2">Up to 50% off</p>
-                                    <div class="w-12 h-1 bg-white mx-auto my-3"></div>
-                                    <p class="text-sm">Limited time offer</p>
-                                </div>
-                            </div>
-                            <div class="p-6">
-                                <h3 class="font-bold text-lg mb-2 text-gray-800">Fashion Sale Post</h3>
-                                <p class="text-gray-600 text-sm">Instagram promotion for clothing brand</p>
-                            </div>
-                        </div>
-                        
-                        <!-- Social Media 2 -->
-                        <div class="project-card">
-                            <div class="h-64 bg-gradient-to-r from-blue-400 to-teal-500 flex items-center justify-center p-4">
-                                <div class="text-center text-white">
-                                    <h3 class="font-bold text-2xl">HEALTHY RECIPES</h3>
-                                    <p class="text-lg mt-2">New blog post</p>
-                                    <div class="w-12 h-1 bg-white mx-auto my-3"></div>
-                                    <p class="text-sm">5 quick & easy meals</p>
-                                </div>
-                            </div>
-                            <div class="p-6">
-                                <h3 class="font-bold text-lg mb-2 text-gray-800">Food Blog Post</h3>
-                                <p class="text-gray-600 text-sm">Facebook post for a nutrition blog</p>
-                            </div>
-                        </div>
-                        
-                        <!-- Social Media 3 -->
-                        <div class="project-card">
-                            <div class="h-64 bg-gradient-to-bl from-yellow-400 to-orange-500 flex items-center justify-center p-4">
-                                <div class="text-center text-white">
-                                    <h3 class="font-bold text-2xl">TRAVEL TIPS</h3>
-                                    <p class="text-lg mt-2">5 must-visit places</p>
-                                    <div class="w-12 h-1 bg-white mx-auto my-3"></div>
-                                    <p class="text-sm">Hidden gems revealed</p>
-                                </div>
-                            </div>
-                            <div class="p-6">
-                                <h3 class="font-bold text-lg mb-2 text-gray-800">Travel Guide Post</h3>
-                                <p class="text-gray-600 text-sm">Pinterest graphic for travel agency</p>
-                            </div>
-                        </div>
-                        
-                        <!-- Social Media 4 -->
-                        <div class="project-card">
-                            <div class="h-64 bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center p-4">
-                                <div class="text-center text-white">
-                                    <h3 class="font-bold text-2xl">MUSIC PLAYLIST</h3>
-                                    <p class="text-lg mt-2">Summer Vibes</p>
-                                    <div class="w-12 h-1 bg-white mx-auto my-3"></div>
-                                    <p class="text-sm">20 trending songs</p>
-                                </div>
-                            </div>
-                            <div class="p-6">
-                                <h3 class="font-bold text-lg mb-2 text-gray-800">Music Playlist Cover</h3>
-                                <p class="text-gray-600 text-sm">Spotify playlist promotion</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Thumbnails Tab Content -->
-            <div id="thumbnails" class="tab-content">
-                <div class="category-container thumbnails-category reveal">
-                    <h3 class="category-heading" style="color: var(--color-accent);">
-                        <i class="fas fa-play-circle mr-2"></i> YouTube Thumbnails
-                    </h3>
-                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                        <!-- Thumbnail 1 -->
-                        <div class="project-card">
-                            <div class="h-64 bg-gradient-to-r from-indigo-600 to-purple-600 flex items-center justify-center p-4">
-                                <div class="text-center text-white">
-                                    <div class="mb-3">
-                                        <svg class="w-12 h-12 mx-auto" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                                            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clip-rule="evenodd"></path>
-                                        </svg>
-                                    </div>
-                                    <h3 class="font-bold text-2xl">Design Tutorial</h3>
-                                    <p class="text-sm mt-2">Master Photoshop in 30 minutes</p>
-                                </div>
-                            </div>
-                            <div class="p-6">
-                                <h3 class="font-bold text-lg mb-2 text-gray-800">YouTube Thumbnail</h3>
-                                <p class="text-gray-600 text-sm">Tutorial video for design channel</p>
-                            </div>
-                        </div>
-                        
-                        <!-- Thumbnail 2 -->
-                        <div class="project-card">
-                            <div class="h-64 bg-gradient-to-br from-red-500 to-pink-500 flex items-center justify-center p-4">
-                                <div class="text-center text-white">
-                                    <div class="mb-3">
-                                        <svg class="w-12 h-12 mx-auto" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                                            <path d="M9 4.804A7.968 7.968 0 005.5 4c-1.255 0-2.443.29-3.5.804v10A7.969 7.969 0 015.5 14c1.669 0 3.218.51 4.5 1.385A7.962 7.962 0 0114.5 14c1.255 0 2.443.29 3.5.804v-10A7.968 7.968 0 0014.5 4c-1.255 0-2.443.29-3.5.804V12a1 1 0 11-2 0V4.804z"></path>
-                                        </svg>
-                                    </div>
-                                    <h3 class="font-bold text-2xl">Book Review</h3>
-                                    <p class="text-sm mt-2">Top 5 design books of 2023</p>
-                                </div>
-                            </div>
-                            <div class="p-6">
-                                <h3 class="font-bold text-lg mb-2 text-gray-800">Book Review Thumbnail</h3>
-                                <p class="text-gray-600 text-sm">Literature channel video cover</p>
-                            </div>
-                        </div>
-                        
-                        <!-- Thumbnail 3 -->
-                        <div class="project-card">
-                            <div class="h-64 bg-gradient-to-bl from-blue-500 to-cyan-400 flex items-center justify-center p-4">
-                                <div class="text-center text-white">
-                                    <div class="mb-3">
-                                        <svg class="w-12 h-12 mx-auto" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                                            <path fill-rule="evenodd" d="M12.316 3.051a1 1 0 01.633 1.265l-4 12a1 1 0 11-1.898-.632l4-12a1 1 0 011.265-.633zM5.707 6.293a1 1 0 010 1.414L3.414 10l2.293 2.293a1 1 0 11-1.414 1.414l-3-3a1 1 0 010-1.414l3-3a1 1 0 011.414 0zm8.586 0a1 1 0 011.414 0l3 3a1 1 0 010 1.414l-3 3a1 1 0 11-1.414-1.414L16.586 10l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd"></path>
-                                        </svg>
-                                    </div>
-                                    <h3 class="font-bold text-2xl">Coding Tips</h3>
-                                    <p class="text-sm mt-2">Web design hacks for beginners</p>
-                                </div>
-                            </div>
-                            <div class="p-6">
-                                <h3 class="font-bold text-lg mb-2 text-gray-800">Tech Tutorial Thumbnail</h3>
-                                <p class="text-gray-600 text-sm">Programming tutorial cover</p>
-                            </div>
-                        </div>
-                        
-                        <!-- Thumbnail 4 -->
-                        <div class="project-card">
-                            <div class="h-64 bg-gradient-to-br from-green-500 to-emerald-600 flex items-center justify-center p-4">
-                                <div class="text-center text-white">
-                                    <div class="mb-3">
-                                        <svg class="w-12 h-12 mx-auto" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                                            <path fill-rule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clip-rule="evenodd"></path>
-                                        </svg>
-                                    </div>
-                                    <h3 class="font-bold text-2xl">Wellness Tips</h3>
-                                    <p class="text-sm mt-2">7 habits for better health</p>
-                                </div>
-                            </div>
-                            <div class="p-6">
-                                <h3 class="font-bold text-lg mb-2 text-gray-800">Health Channel Thumbnail</h3>
-                                <p class="text-gray-600 text-sm">Wellness video cover design</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Posters Tab Content -->
-            <div id="posters" class="tab-content">
-                <div class="category-container posters-category reveal">
-                    <h3 class="category-heading" style="color: var(--color-tertiary);">
-                        <i class="fas fa-image mr-2"></i> Poster Designs
-                    </h3>
-                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                        <!-- Poster 1 -->
-                        <div class="project-card">
-                            <div class="h-64 bg-indigo-900 flex items-center justify-center p-4">
-                                <div class="text-center text-white">
-                                    <h3 class="font-bold text-2xl mb-1">MUSIC FESTIVAL</h3>
-                                    <p class="text-xs mb-2">SUMMER 2023</p>
-                                    <div class="w-12 h-1 bg-yellow-400 mx-auto mb-2"></div>
-                                    <p class="text-sm">LIVE PERFORMANCES</p>
-                                </div>
-                            </div>
-                            <div class="p-6">
-                                <h3 class="font-bold text-lg mb-2 text-gray-800">Music Festival Poster</h3>
-                                <p class="text-gray-600 text-sm">Event promotion design</p>
-                            </div>
-                        </div>
-                        
-                        <!-- Poster 2 -->
-                        <div class="project-card">
-                            <div class="h-64 bg-red-800 flex items-center justify-center p-4">
-                                <div class="text-center text-white">
-                                    <h3 class="font-bold text-2xl mb-1">ART EXHIBITION</h3>
-                                    <p class="text-xs mb-2">MODERN PERSPECTIVES</p>
-                                    <div class="w-12 h-1 bg-white mx-auto mb-2"></div>
-                                    <p class="text-sm">CITY GALLERY</p>
-                                </div>
-                            </div>
-                            <div class="p-6">
-                                <h3 class="font-bold text-lg mb-2 text-gray-800">Art Exhibition Poster</h3>
-                                <p class="text-gray-600 text-sm">Gallery event promotion</p>
-                            </div>
-                        </div>
-                        
-                        <!-- Poster 3 -->
-                        <div class="project-card">
-                            <div class="h-64 bg-emerald-800 flex items-center justify-center p-4">
-                                <div class="text-center text-white">
-                                    <h3 class="font-bold text-2xl mb-1">ECO CONFERENCE</h3>
-                                    <p class="text-xs mb-2">SUSTAINABILITY NOW</p>
-                                    <div class="w-12 h-1 bg-yellow-300 mx-auto mb-2"></div>
-                                    <p class="text-sm">JOIN THE MOVEMENT</p>
-                                </div>
-                            </div>
-                            <div class="p-6">
-                                <h3 class="font-bold text-lg mb-2 text-gray-800">Conference Poster</h3>
-                                <p class="text-gray-600 text-sm">Environmental event design</p>
-                            </div>
-                        </div>
-                        
-                        <!-- Poster 4 -->
-                        <div class="project-card">
-                            <div class="h-64 bg-purple-900 flex items-center justify-center p-4">
-                                <div class="text-center text-white">
-                                    <h3 class="font-bold text-2xl mb-1">TECH SUMMIT</h3>
-                                    <p class="text-xs mb-2">FUTURE INNOVATIONS</p>
-                                    <div class="w-12 h-1 bg-blue-400 mx-auto mb-2"></div>
-                                    <p class="text-sm">REGISTER NOW</p>
-                                </div>
-                            </div>
-                            <div class="p-6">
-                                <h3 class="font-bold text-lg mb-2 text-gray-800">Tech Summit Poster</h3>
-                                <p class="text-gray-600 text-sm">Technology conference promotion</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Print Design Tab Content -->
-            <div id="print" class="tab-content">
-                <div class="category-container print-category reveal">
-                    <h3 class="category-heading" style="color: var(--color-quaternary);">
-                        <i class="fas fa-print mr-2"></i> Print Designs
-                    </h3>
-                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                        <!-- Print 1 -->
-                        <div class="project-card">
-                            <div class="h-64 bg-slate-200 flex items-center justify-center p-4">
-                                <div class="text-center">
-                                    <h3 class="font-bold text-gray-800 text-2xl">ELEGANT DINING</h3>
-                                    <div class="w-10 h-1 bg-yellow-500 mx-auto my-2"></div>
-                                    <p class="text-sm text-gray-600">RESTAURANT & BAR</p>
-                                </div>
-                            </div>
-                            <div class="p-6">
-                                <h3 class="font-bold text-lg mb-2 text-gray-800">Restaurant Menu</h3>
-                                <p class="text-gray-600 text-sm">Fine dining menu design</p>
-                            </div>
-                        </div>
-                        
-                        <!-- Print 2 -->
-                        <div class="project-card">
-                            <div class="h-64 bg-blue-50 flex items-center justify-center p-4">
-                                <div class="text-center">
-                                    <div class="mb-2">
-                                        <svg class="w-12 h-12 mx-auto text-blue-600" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                                            <path fill-rule="evenodd" d="M6 6V5a3 3 0 013-3h2a3 3 0 013 3v1h2a2 2 0 012 2v3.57A22.952 22.952 0 0110 13a22.95 22.95 0 01-8-1.43V8a2 2 0 012-2h2zm2-1a1 1 0 011-1h2a1 1 0 011 1v1H8V5zm1 5a1 1 0 011-1h.01a1 1 0 110 2H10a1 1 0 01-1-1z" clip-rule="evenodd"></path>
-                                            <path d="M2 13.692V16a2 2 0 002 2h12a2 2 0 002-2v-2.308A24.974 24.974 0 0110 15c-2.796 0-5.487-.46-8-1.308z"></path>
-                                        </svg>
-                                    </div>
-                                    <h3 class="font-bold text-gray-800 text-xl">JANE SMITH</h3>
-                                    <p class="text-xs text-gray-600">CREATIVE DIRECTOR</p>
-                                </div>
-                            </div>
-                            <div class="p-6">
-                                <h3 class="font-bold text-lg mb-2 text-gray-800">Business Card</h3>
-                                <p class="text-gray-600 text-sm">Corporate identity design</p>
-                            </div>
-                        </div>
-                        
-                        <!-- Print 3 -->
-                        <div class="project-card">
-                            <div class="h-64 bg-amber-50 flex items-center justify-center p-4">
-                                <div class="text-center">
-                                    <h3 class="font-bold text-amber-800 text-2xl">WEDDING</h3>
-                                    <p class="text-xs text-amber-700 mb-2">INVITATION</p>
-                                    <div class="w-10 h-1 bg-amber-400 mx-auto mb-2"></div>
-                                    <p class="text-xs text-amber-700">SARAH & MICHAEL</p>
-                                </div>
-                            </div>
-                            <div class="p-6">
-                                <h3 class="font-bold text-lg mb-2 text-gray-800">Wedding Invitation</h3>
-                                <p class="text-gray-600 text-sm">Elegant stationery design</p>
-                            </div>
-                        </div>
-                        
-                        <!-- Print 4 -->
-                        <div class="project-card">
-                            <div class="h-64 bg-emerald-50 flex items-center justify-center p-4">
-                                <div class="text-center">
-                                    <h3 class="font-bold text-emerald-800 text-2xl">ANNUAL</h3>
-                                    <p class="text-xs text-emerald-700 mb-2">REPORT</p>
-                                    <div class="w-10 h-1 bg-emerald-500 mx-auto mb-2"></div>
-                                    <p class="text-xs text-emerald-700">FISCAL YEAR 2023</p>
-                                </div>
-                            </div>
-                            <div class="p-6">
-                                <h3 class="font-bold text-lg mb-2 text-gray-800">Annual Report</h3>
-                                <p class="text-gray-600 text-sm">Corporate publication design</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+        <div class="bg-slate-800 p-6 rounded-b-lg">
+            <h3 class="text-2xl font-semibold mb-2">Modern X Logo</h3>
+            <p class="text-slate-300 mb-4">Brand identity for tech startup</p>
+            <p class="text-slate-400">This minimalist logo combines a bold 'X' mark with a vibrant circular background, creating a strong visual identity that represents innovation and forward-thinking. The contrasting colors ensure high visibility across various applications.</p>
         </div>
-    </section>
-    
-    <!-- Section Divider -->
-    <div class="section-divider">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320" preserveAspectRatio="none">
-            <path fill="#F9F7FF" fill-opacity="1" d="M0,288L48,272C96,256,192,224,288,197.3C384,171,480,149,576,165.3C672,181,768,235,864,250.7C960,267,1056,245,1152,224C1248,203,1344,181,1392,170.7L1440,160L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path>
+    </div>
+</div>
+
+<div id="logo2-modal" class="modal">
+    <span class="modal-close">&times;</span>
+    <div class="modal-content">
+        <svg class="w-full" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+            <rect width="200" height="200" fill="#0f172a" />
+            <circle cx="100" cy="100" r="60" fill="#feca57" />
+            <circle cx="100" cy="100" r="40" fill="#0f172a" />
+            <circle cx="100" cy="100" r="20" fill="#feca57" />
         </svg>
+        <div class="bg-slate-800 p-6 rounded-b-lg">
+            <h3 class="text-2xl font-semibold mb-2">Circular Brand</h3>
+            <p class="text-slate-300 mb-4">Logo for photography studio</p>
+            <p class="text-slate-400">This concentric circle design evokes the lens of a camera, making it perfect for a photography studio. The golden yellow color represents creativity and optimism, while the clean geometric shapes ensure the logo remains timeless and versatile.</p>
+        </div>
     </div>
+</div>
 
-    <!-- Contact Section -->
-    <section id="contact" class="py-20 section-bg-primary relative">
-        <div class="container mx-auto px-4">
-            <div class="text-center mb-16 reveal">
-                <h2 class="text-3xl md:text-5xl font-bold mb-4 section-heading">Get In <span class="gradient-text">Touch</span></h2>
-                <div class="w-24 h-1 gradient-bg mx-auto rounded-full"></div>
-                <p class="text-gray-600 mt-6 max-w-2xl mx-auto">
-                    Have a project in mind? Let's work together to create something amazing
-                </p>
-            </div>
-            
-            <div class="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-10">
-                <div class="bg-white rounded-xl p-8 shadow-lg border border-gray-100 reveal" style="transition-delay: 0.1s;">
-                    <h3 class="text-2xl font-bold mb-6 gradient-text">Send Me a Message</h3>
-                    
-                    <form id="contact-form">
-                        <div class="mb-6">
-                            <label for="name" class="block text-gray-700 font-medium mb-2">Name</label>
-                            <input type="text" id="name" class="w-full px-4 py-3 rounded-lg contact-input focus:outline-none" placeholder="Your name">
-                        </div>
-                        
-                        <div class="mb-6">
-                            <label for="email" class="block text-gray-700 font-medium mb-2">Email</label>
-                            <input type="email" id="email" class="w-full px-4 py-3 rounded-lg contact-input focus:outline-none" placeholder="Your email">
-                        </div>
-                        
-                        <div class="mb-6">
-                            <label for="subject" class="block text-gray-700 font-medium mb-2">Subject</label>
-                            <input type="text" id="subject" class="w-full px-4 py-3 rounded-lg contact-input focus:outline-none" placeholder="Subject">
-                        </div>
-                        
-                        <div class="mb-6">
-                            <label for="message" class="block text-gray-700 font-medium mb-2">Message</label>
-                            <textarea id="message" rows="5" class="w-full px-4 py-3 rounded-lg contact-input focus:outline-none" placeholder="Your message"></textarea>
-                        </div>
-                        
-                        <button type="submit" class="w-full gradient-bg hover:opacity-90 text-white font-medium py-3 px-6 rounded-lg transition duration-300 transform hover:scale-[1.02] shadow-lg">Send Message</button>
-                    </form>
-                </div>
-                
-                <div class="reveal" style="transition-delay: 0.3s;">
-                    <div class="bg-white rounded-xl p-8 shadow-lg border border-gray-100 mb-8">
-                        <h3 class="text-2xl font-bold mb-6 gradient-text">Contact Information</h3>
-                        
-                        <div class="space-y-6">
-                            <div class="flex items-start">
-                                <div class="w-12 h-12 rounded-full gradient-bg flex items-center justify-center mr-4 flex-shrink-0 text-white">
-                                    <i class="fas fa-envelope text-xl"></i>
-                                </div>
-                                <div>
-                                    <h4 class="font-semibold mb-1 text-gray-800">Email</h4>
-                                    <p class="text-gray-600">jane.smith@example.com</p>
-                                </div>
-                            </div>
-                            
-                            <div class="flex items-start">
-                                <div class="w-12 h-12 rounded-full gradient-bg flex items-center justify-center mr-4 flex-shrink-0 text-white">
-                                    <i class="fas fa-phone text-xl"></i>
-                                </div>
-                                <div>
-                                    <h4 class="font-semibold mb-1 text-gray-800">Phone</h4>
-                                    <p class="text-gray-600">+1 (555) 123-4567</p>
-                                </div>
-                            </div>
-                            
-                            <div class="flex items-start">
-                                <div class="w-12 h-12 rounded-full gradient-bg flex items-center justify-center mr-4 flex-shrink-0 text-white">
-                                    <i class="fas fa-map-marker-alt text-xl"></i>
-                                </div>
-                                <div>
-                                    <h4 class="font-semibold mb-1 text-gray-800">Location</h4>
-                                    <p class="text-gray-600">New York City, NY, USA</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="bg-white rounded-xl p-8 shadow-lg border border-gray-100">
-                        <h3 class="text-2xl font-bold mb-6 gradient-text">Follow Me</h3>
-                        
-                        <div class="flex space-x-4">
-                            <a href="#" class="w-12 h-12 rounded-full gradient-bg flex items-center justify-center social-icon text-white">
-                                <i class="fab fa-instagram"></i>
-                            </a>
-                            <a href="#" class="w-12 h-12 rounded-full gradient-bg flex items-center justify-center social-icon text-white">
-                                <i class="fab fa-behance"></i>
-                            </a>
-                            <a href="#" class="w-12 h-12 rounded-full gradient-bg flex items-center justify-center social-icon text-white">
-                                <i class="fab fa-dribbble"></i>
-                            </a>
-                            <a href="#" class="w-12 h-12 rounded-full gradient-bg flex items-center justify-center social-icon text-white">
-                                <i class="fab fa-linkedin-in"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
+<div id="logo3-modal" class="modal">
+    <span class="modal-close">&times;</span>
+    <div class="modal-content">
+        <svg class="w-full" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+            <rect width="200" height="200" fill="#16213e" />
+            <polygon points="100,40 140,150 60,150" fill="#48dbfb" />
+            <polygon points="100,70 120,130 80,130" fill="#16213e" />
+        </svg>
+        <div class="bg-slate-800 p-6 rounded-b-lg">
+            <h3 class="text-2xl font-semibold mb-2">Triangle Vision</h3>
+            <p class="text-slate-300 mb-4">Geometric logo for design agency</p>
+            <p class="text-slate-400">This geometric logo uses triangular shapes to create a sense of perspective and vision. The vibrant blue against the deep navy background creates a striking contrast that symbolizes creativity and innovation, perfect for a design agency focused on forward-thinking solutions.</p>
         </div>
-    </section>
+    </div>
+</div>
 
-    <!-- Footer -->
-    <footer class="bg-white text-gray-800 py-10 border-t border-gray-200">
-        <div class="container mx-auto px-4 text-center">
-            <a href="#" class="text-2xl font-bold mb-6 inline-block">
-                <span class="gradient-text">Jane</span><span class="text-gray-800">Smith</span>
-            </a>
-            
-            <p class="mb-6 text-gray-600 max-w-md mx-auto">Creating beautiful designs that communicate and connect with your audience.</p>
-            
-            <div class="flex justify-center space-x-6 mb-8">
-                <a href="#" class="text-gray-500 hover:text-gray-800 transition duration-300">
-                    <i class="fab fa-instagram"></i>
-                </a>
-                <a href="#" class="text-gray-500 hover:text-gray-800 transition duration-300">
-                    <i class="fab fa-behance"></i>
-                </a>
-                <a href="#" class="text-gray-500 hover:text-gray-800 transition duration-300">
-                    <i class="fab fa-dribbble"></i>
-                </a>
-                <a href="#" class="text-gray-500 hover:text-gray-800 transition duration-300">
-                    <i class="fab fa-linkedin-in"></i>
-                </a>
-            </div>
-            
-            <div class="border-t border-gray-200 pt-6">
-                <p class="text-sm text-gray-500">&copy; 2023 Jane Smith. All rights reserved.</p>
-            </div>
+<!-- Add more modals for other categories -->
+<div id="social1-modal" class="modal">
+    <span class="modal-close">&times;</span>
+    <div class="modal-content">
+        <svg class="w-full" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+            <rect width="200" height="200" fill="#6c5ce7" />
+            <rect x="20" y="60" width="160" height="80" rx="10" fill="white" />
+            <text x="100" y="110" font-family="Arial" font-size="16" fill="#6c5ce7" text-anchor="middle">SUMMER SALE</text>
+            <circle cx="50" cy="40" r="15" fill="#feca57" />
+        </svg>
+        <div class="bg-slate-800 p-6 rounded-b-lg">
+            <h3 class="text-2xl font-semibold mb-2">Summer Campaign</h3>
+            <p class="text-slate-300 mb-4">Instagram post for fashion brand</p>
+            <p class="text-slate-400">This vibrant social media design uses a bold purple background with a clean white text box to announce a summer sale. The bright yellow sun element adds a seasonal touch that immediately communicates the summer theme, making it perfect for capturing attention in busy social feeds.</p>
         </div>
-    </footer>
+    </div>
+</div>
 
-    <script>
-        // Mobile Menu Toggle
-        const menuToggle = document.getElementById('menu-toggle');
-        const mobileMenu = document.getElementById('mobile-menu');
-        
-        menuToggle.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
-        });
-        
-        // Smooth Scrolling for Navigation Links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                
-                const targetId = this.getAttribute('href');
-                const targetElement = document.querySelector(targetId);
-                
-                if (targetElement) {
-                    window.scrollTo({
-                        top: targetElement.offsetTop - 80,
-                        behavior: 'smooth'
-                    });
-                    
-                    // Close mobile menu if open
-                    if (!mobileMenu.classList.contains('hidden')) {
-                        mobileMenu.classList.add('hidden');
-                    }
+<script>
+    // Mobile Menu Toggle
+    const menuToggle = document.getElementById('menu-toggle');
+    const mobileMenu = document.getElementById('mobile-menu');
+    
+    menuToggle.addEventListener('click', () => {
+        mobileMenu.classList.toggle('hidden');
+    });
+    
+    // Project Category Tabs
+    const categoryBtns = document.querySelectorAll('.category-btn');
+    const projectSections = document.querySelectorAll('.project-section');
+    
+    categoryBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            const category = btn.getAttribute('data-category');
+            
+            // Update active button
+            categoryBtns.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            
+            // Show selected category
+            projectSections.forEach(section => {
+                section.classList.remove('active');
+                if (section.id === `${category}-section`) {
+                    section.classList.add('active');
                 }
             });
         });
-        
-        // Project Tabs
-        const tabButtons = document.querySelectorAll('.project-tab-btn');
-        const tabContents = document.querySelectorAll('.tab-content');
-        
-        tabButtons.forEach(button => {
-            button.addEventListener('click', () => {
-                // Remove active class from all buttons
-                tabButtons.forEach(btn => {
-                    btn.classList.remove('active');
-                });
-                
-                // Add active class to clicked button
-                button.classList.add('active');
-                
-                // Hide all tab contents
-                tabContents.forEach(content => {
-                    content.classList.remove('active');
-                });
-                
-                // Show the selected tab content
-                const tabId = button.getAttribute('data-tab');
-                document.getElementById(tabId).classList.add('active');
-            });
-        });
-        
-        // Contact Form Submission
-        const contactForm = document.getElementById('contact-form');
-        
-        contactForm.addEventListener('submit', (e) => {
-            e.preventDefault();
+    });
+    
+    // Scroll Animation
+    const fadeElements = document.querySelectorAll('.fade-in');
+    
+    function checkFade() {
+        fadeElements.forEach(element => {
+            const elementTop = element.getBoundingClientRect().top;
+            const elementBottom = element.getBoundingClientRect().bottom;
             
-            // Get form values
-            const name = document.getElementById('name').value;
-            const email = document.getElementById('email').value;
-            const subject = document.getElementById('subject').value;
-            const message = document.getElementById('message').value;
-            
-            // Simple validation
-            if (name && email && subject && message) {
-                // In a real application, you would send this data to a server
-                alert('Thank you for your message! I will get back to you soon.');
-                contactForm.reset();
-            } else {
-                alert('Please fill in all fields.');
+            if (elementTop < window.innerHeight - 100 && elementBottom > 0) {
+                element.classList.add('visible');
             }
         });
-        
-        // Animate skill bars on scroll
-        function animateSkillBars() {
-            const skillBars = document.querySelectorAll('.progress-fill');
+    }
+    
+    // Initial check
+    checkFade();
+    
+    // Check on scroll
+    window.addEventListener('scroll', checkFade);
+    
+    // Modal functionality
+    const projectCards = document.querySelectorAll('.project-card');
+    const modals = document.querySelectorAll('.modal');
+    const modalCloses = document.querySelectorAll('.modal-close');
+    
+    projectCards.forEach(card => {
+        card.addEventListener('click', () => {
+            const modalId = card.getAttribute('data-modal') + '-modal';
+            const modal = document.getElementById(modalId);
             
-            skillBars.forEach(bar => {
-                const width = bar.getAttribute('data-width');
-                bar.style.width = width;
-            });
-        }
-        
-        // Reveal animations on scroll
-        function revealOnScroll() {
-            const reveals = document.querySelectorAll('.reveal');
-            
-            reveals.forEach(element => {
-                const windowHeight = window.innerHeight;
-                const elementTop = element.getBoundingClientRect().top;
-                const elementVisible = 150;
-                
-                if (elementTop < windowHeight - elementVisible) {
-                    element.classList.add('active');
+            if (modal) {
+                modal.classList.add('show');
+                document.body.style.overflow = 'hidden';
+            }
+        });
+    });
+    
+    modalCloses.forEach(close => {
+        close.addEventListener('click', () => {
+            const modal = close.closest('.modal');
+            modal.classList.remove('show');
+            document.body.style.overflow = 'auto';
+        });
+    });
+    
+    // Close modal when clicking outside content
+    modals.forEach(modal => {
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                modal.classList.remove('show');
+                document.body.style.overflow = 'auto';
+            }
+        });
+    });
+    
+    // Close modal with Escape key
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+            modals.forEach(modal => {
+                if (modal.classList.contains('show')) {
+                    modal.classList.remove('show');
+                    document.body.style.overflow = 'auto';
                 }
             });
         }
-        
-        // Initialize animations
-        window.addEventListener('load', () => {
-            setTimeout(revealOnScroll, 100);
-            setTimeout(animateSkillBars, 500);
-        });
-        
-        window.addEventListener('scroll', revealOnScroll);
-    </script>
-</body>
+    });
+</script>
 </html>
