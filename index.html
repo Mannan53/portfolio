@@ -295,57 +295,80 @@
         .posters-category { border-color: var(--color-tertiary); }
         .print-category { border-color: var(--color-quaternary); }
 
-.testimonial-container {
+.testimonials {
+  padding: 5rem 2rem;
+  background: linear-gradient(145deg, #e3f2fd, #ffffff);
+  text-align: center;
+}
+
+.testimonial-wrapper {
   display: flex;
-  gap: 2rem;
   flex-wrap: wrap;
   justify-content: center;
-  align-items: stretch;
-  animation: fadeInUp 1s ease-in-out;
+  gap: 2rem;
+  margin-top: 2rem;
+  animation: fadeInUp 1.2s ease-in-out;
 }
 
 .testimonial-card {
-  background: linear-gradient(135deg, #ffffff, #f1f8ff);
-  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
   padding: 2rem;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
-  width: 300px;
-  transition: transform 0.3s ease;
-  position: relative;
+  width: 320px;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.12);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
 }
 
 .testimonial-card:hover {
   transform: translateY(-10px);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.18);
 }
 
-.testimonial-card p {
+.testimonial-content p {
   font-style: italic;
   color: #333;
   font-size: 1.05rem;
-  margin-bottom: 1rem;
+  margin-bottom: 1.5rem;
+  line-height: 1.6;
 }
 
-.testimonial-card h4 {
-  color: #0077c2;
+.client-info {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.client-info img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #2196f3;
+}
+
+.client-info h4 {
+  margin: 0;
   font-size: 1.1rem;
-  margin-bottom: 0.2rem;
+  color: #2196f3;
 }
 
-.testimonial-card span {
-  color: #555;
+.client-info span {
   font-size: 0.9rem;
+  color: #555;
 }
 
 @keyframes fadeInUp {
   from {
     opacity: 0;
-    transform: translateY(30px);
+    transform: translateY(40px);
   }
   to {
     opacity: 1;
     transform: translateY(0);
   }
-}        
+}
+       
     </style>
 </head>
 <body>
@@ -1030,21 +1053,36 @@
 
     <!-- Contact Section -->
 
-    <section id="testimonials" class="testimonials">
+  <section id="testimonials" class="testimonials">
   <h2 class="section-title">What Clients Say</h2>
-  <div class="testimonial-container">
+  <div class="testimonial-wrapper">
     <div class="testimonial-card">
-      <p>“Mannan’s creativity turned our vision into stunning visuals. Highly professional!”</p>
-      <h4>– Anjali Mehra</h4>
-      <span>Marketing Manager</span>
+      <div class="testimonial-content">
+        <p>“Mannan’s designs boosted our campaign's visibility like magic. Super creative & responsive!”</p>
+        <div class="client-info">
+          <img src="https://i.pravatar.cc/100?img=11" alt="Client Photo">
+          <div>
+            <h4>Riya Kapoor</h4>
+            <span>Campaign Lead, NGO</span>
+          </div>
+        </div>
+      </div>
     </div>
     <div class="testimonial-card">
-      <p>“Fast delivery, eye-catching design, and a great attitude. Totally recommend!”</p>
-      <h4>– Rahul Verma</h4>
-      <span>Startup Founder</span>
+      <div class="testimonial-content">
+        <p>“He’s not just a designer, he’s a creative partner. Our app UI turned out world-class!”</p>
+        <div class="client-info">
+          <img src="https://i.pravatar.cc/100?img=32" alt="Client Photo">
+          <div>
+            <h4>Arjun Mehta</h4>
+            <span>Founder, TechStart</span>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
+
 
     <!-- Contact Section -->
     <section id="contact" class="py-20 section-bg-primary relative">
