@@ -991,23 +991,29 @@
                 <div class="bg-white rounded-xl p-8 shadow-lg border border-gray-100 reveal" style="transition-delay: 0.1s;">
                     <h3 class="text-2xl font-bold mb-6 gradient-text">Send Me a Message</h3>
                     
-                
-  <h2>Client Experiences</h2>
-  <div class="testimonial-container">
-
-    <div class="testimonial-card">
-      <p>"Mannan did an amazing job on our project. Very professional and quick!"</p>
-      <h4>– Ankit Sharma</h4>
-      <span class="designation">Founder, TechNest</span>
-    </div>
-
-    <div class="testimonial-card">
-      <p>"His poster designs really boosted our campaign reach. Highly recommended!"</p>
-      <h4>– Priya Sinha</h4>
-      <span class="designation">Content Creator</span>
-    </div>
-
-  </div>
+                    <form id="contact-form">
+                        <div class="mb-6">
+                            <label for="name" class="block text-gray-700 font-medium mb-2">Name</label>
+                            <input type="text" id="name" class="w-full px-4 py-3 rounded-lg contact-input focus:outline-none" placeholder="Your name">
+                        </div>
+                        
+                        <div class="mb-6">
+                            <label for="email" class="block text-gray-700 font-medium mb-2">Email</label>
+                            <input type="email" id="email" class="w-full px-4 py-3 rounded-lg contact-input focus:outline-none" placeholder="Your email">
+                        </div>
+                        
+                        <div class="mb-6">
+                            <label for="subject" class="block text-gray-700 font-medium mb-2">Subject</label>
+                            <input type="text" id="subject" class="w-full px-4 py-3 rounded-lg contact-input focus:outline-none" placeholder="Subject">
+                        </div>
+                        
+                        <div class="mb-6">
+                            <label for="message" class="block text-gray-700 font-medium mb-2">Message</label>
+                            <textarea id="message" rows="5" class="w-full px-4 py-3 rounded-lg contact-input focus:outline-none" placeholder="Your message"></textarea>
+                        </div>
+                        
+                        <button type="submit" class="w-full gradient-bg hover:opacity-90 text-white font-medium py-3 px-6 rounded-lg transition duration-300 transform hover:scale-[1.02] shadow-lg">Send Message</button>
+                    </form>
                 </div>
                 
                 <div class="reveal" style="transition-delay: 0.3s;">
