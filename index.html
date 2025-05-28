@@ -672,27 +672,29 @@
                         <i class="fas fa-vector-square mr-2"></i> Logo Designs
                     </h3>
                     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                        <!-- Logo 1 -->
-                       <!-- 🔹 Fullscreen Image Modal -->
-<div id="imageModal" class="fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center z-50 hidden">
-  <img id="modalImage" class="max-w-full max-h-full rounded" />
-</div>
+                        
+                <!-- Logo 1 with Fullscreen Image View -->
+<div class="project-card">
+  <!-- Image Area -->
+  <div class="h-64 overflow-hidden cursor-pointer">
+    <img src="https://IMG_7612.png/600x400" 
+         alt="Project Image" 
+         class="w-full h-full object-cover transition duration-300 hover:scale-105" 
+         onclick="showFull(this.src)">
+  </div>
 
-<!-- 🔹 Project Card -->
-<div class="project-card max-w-sm mx-auto bg-white rounded-lg shadow-md overflow-hidden">
-  <!-- Clickable Image -->
-  <img
-    src="https://source.unsplash.com/600x400/?mountain"
-    alt="Mountain Peak Logo"
-    class="h-64 w-full object-cover cursor-pointer"
-    onclick="openImageModal(this.src)"
-  />
-
-  <!-- Text Content -->
+  <!-- Description -->
   <div class="p-6">
     <h3 class="font-bold text-lg mb-2 text-gray-800">Mountain Peak Logo</h3>
     <p class="text-gray-600 text-sm">Brand identity for an outdoor adventure company</p>
   </div>
+</div>
+
+<!-- Fullscreen Image Overlay -->
+<div id="fullscreenImage" 
+     class="fixed inset-0 bg-black bg-opacity-90 hidden items-center justify-center z-50" 
+     onclick="hideFull()">
+  <img id="fullImg" class="max-w-full max-h-full rounded-lg shadow-lg">
 </div>
 
                         
@@ -1224,29 +1226,6 @@
         </div>
     </footer>
 
-    <!-- 🔹 Fullscreen Image Modal -->
-<div id="imageModal" class="fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center z-50 hidden">
-  <img id="modalImage" class="max-w-full max-h-full rounded" />
-</div>
-
-<!-- 🔹 Project Card -->
-<div class="project-card max-w-sm mx-auto bg-white rounded-lg shadow-md overflow-hidden">
-  <!-- Clickable Image -->
-  <img
-    src="https://source.unsplash.com/600x400/?mountain"
-    alt="Mountain Peak Logo"
-    class="h-64 w-full object-cover cursor-pointer"
-    onclick="openImageModal(this.src)"
-  />
-
-  <!-- Text Content -->
-  <div class="p-6">
-    <h3 class="font-bold text-lg mb-2 text-gray-800">Mountain Peak Logo</h3>
-    <p class="text-gray-600 text-sm">Brand identity for an outdoor adventure company</p>
-  </div>
-</div>
-
-
     <script>
         // Mobile Menu Toggle
         const menuToggle = document.getElementById('menu-toggle');
@@ -1357,6 +1336,18 @@
         });
         
         window.addEventListener('scroll', revealOnScroll);
+
+function showFull(src) {
+  document.getElementById("fullImg").src = src;
+  document.getElementById("fullscreenImage").classList.remove("hidden");
+  document.getElementById("fullscreenImage").classList.add("flex");
+}
+
+function hideFull() {
+  document.getElementById("fullscreenImage").classList.add("hidden");
+  document.getElementById("fullscreenImage").classList.remove("flex");
+}
+        
     </script>
 </body>
 </html>
