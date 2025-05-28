@@ -673,18 +673,28 @@
                     </h3>
                     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
                         <!-- Logo 1 -->
-                        <div class="project-card">
-                            <div class="h-64 bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center p-8">
-                                <svg class="w-full h-full text-white" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-                                    <circle cx="100" cy="100" r="80" fill="currentColor" fill-opacity="0.2"/>
-                                    <path d="M100 50 L150 150 L50 150 Z" fill="currentColor"/>
-                                </svg>
-                            </div>
-                            <div class="p-6">
-                                <h3 class="font-bold text-lg mb-2 text-gray-800">Mountain Peak Logo</h3>
-                                <p class="text-gray-600 text-sm">Brand identity for an outdoor adventure company</p>
-                            </div>
-                        </div>
+                       <!-- 🔹 Fullscreen Image Modal -->
+<div id="imageModal" class="fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center z-50 hidden">
+  <img id="modalImage" class="max-w-full max-h-full rounded" />
+</div>
+
+<!-- 🔹 Project Card -->
+<div class="project-card max-w-sm mx-auto bg-white rounded-lg shadow-md overflow-hidden">
+  <!-- Clickable Image -->
+  <img
+    src="https://source.unsplash.com/600x400/?mountain"
+    alt="Mountain Peak Logo"
+    class="h-64 w-full object-cover cursor-pointer"
+    onclick="openImageModal(this.src)"
+  />
+
+  <!-- Text Content -->
+  <div class="p-6">
+    <h3 class="font-bold text-lg mb-2 text-gray-800">Mountain Peak Logo</h3>
+    <p class="text-gray-600 text-sm">Brand identity for an outdoor adventure company</p>
+  </div>
+</div>
+
                         
                         <!-- Logo 2 -->
                         <div class="project-card">
@@ -1213,6 +1223,29 @@
             </div>
         </div>
     </footer>
+
+    <!-- 🔹 Fullscreen Image Modal -->
+<div id="imageModal" class="fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center z-50 hidden">
+  <img id="modalImage" class="max-w-full max-h-full rounded" />
+</div>
+
+<!-- 🔹 Project Card -->
+<div class="project-card max-w-sm mx-auto bg-white rounded-lg shadow-md overflow-hidden">
+  <!-- Clickable Image -->
+  <img
+    src="https://source.unsplash.com/600x400/?mountain"
+    alt="Mountain Peak Logo"
+    class="h-64 w-full object-cover cursor-pointer"
+    onclick="openImageModal(this.src)"
+  />
+
+  <!-- Text Content -->
+  <div class="p-6">
+    <h3 class="font-bold text-lg mb-2 text-gray-800">Mountain Peak Logo</h3>
+    <p class="text-gray-600 text-sm">Brand identity for an outdoor adventure company</p>
+  </div>
+</div>
+
 
     <script>
         // Mobile Menu Toggle
