@@ -1448,10 +1448,30 @@
         });
         
         // Project Tabs
-       <button onclick="document.getElementById('logos').scrollIntoView({ behavior: 'smooth' })">Logos</button>
-<button onclick="document.getElementById('social-media').scrollIntoView({ behavior: 'smooth' })">Social Media</button>
-<button onclick="document.getElementById('thumbnails').scrollIntoView({ behavior: 'smooth' })">Thumbnails</button>
-
+        const tabButtons = document.querySelectorAll('.project-tab-btn');
+        const tabContents = document.querySelectorAll('.tab-content');
+        
+        tabButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                // Remove active class from all buttons
+                tabButtons.forEach(btn => {
+                    btn.classList.remove('active');
+                });
+                
+                // Add active class to clicked button
+                button.classList.add('active');
+                
+                // Hide all tab contents
+                tabContents.forEach(content => {
+                    content.classList.remove('active');
+                });
+                
+                // Show the selected tab content
+                const tabId = button.getAttribute('data-tab');
+                document.getElementById(tabId).classList.add('active');
+            });
+        });
+        
         // Contact Form Submission
         const contactForm = document.getElementById('contact-form');
         
