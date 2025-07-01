@@ -371,7 +371,8 @@
        
     </style>
 </head>
-<body>
+<body class="bg-white text-gray-900 dark:bg-gray-900 dark:text-white transition-colors duration-300">
+
     <!-- Background Blobs -->
     <div class="blob" style="width: 300px; height: 300px; top: 20%; left: 10%; background-color: #6C63FF;"></div>
     <div class="blob" style="width: 350px; height: 350px; top: 50%; right: 5%; background-color: #FF6584;"></div>
@@ -409,6 +410,9 @@
                 <a href="#contact" class="text-gray-700 hover:text-gray-900">Contact</a>
             </div>
         </div>
+        <button id="theme-toggle" class="p-2 rounded-full bg-gray-200 dark:bg-gray-700 transition">
+</button>
+
     </header>
 
     <!-- Hero Section -->
@@ -1620,6 +1624,24 @@ function hideFull() {
   document.getElementById("fullscreenImage").classList.add("hidden");
   document.getElementById("fullscreenImage").classList.remove("flex");
 }
+
+  const toggleBtn = document.getElementById('theme-toggle');
+  const html = document.documentElement;
+
+  // Load saved preference
+  if (localStorage.getItem('theme') === 'dark') {
+    html.classList.add('dark');
+  }
+
+  toggleBtn.addEventListener('click', () => {
+    html.classList.toggle('dark');
+    // Save preference
+    if (html.classList.contains('dark')) {
+      localStorage.setItem('theme', 'dark');
+    } else {
+      localStorage.setItem('theme', 'light');
+    }
+  });
         
     </script>
 </body>
